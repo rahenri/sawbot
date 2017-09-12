@@ -1,0 +1,15 @@
+*.swp
+*.o
+sawbot
+sawbot-*
+submit.tar.gz
+submit.zip
+.d
+__pycache__
+history*
+logs
+out*
+callgrind*
+stderr
+*tee.txt
+*.csv
