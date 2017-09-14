@@ -27,6 +27,6 @@ struct SearchOptions {
 
 std::ostream& operator<<(std::ostream&, const SearchResult&);
 
-SearchResult SearchMove(const Field *board, SearchOptions opt = SearchOptions());
+SearchResult SearchMove(const Field &board, int player, SearchOptions opt = SearchOptions());
 
 #endif

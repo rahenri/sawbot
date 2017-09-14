@@ -48,6 +48,7 @@ unique_ptr<Field> ParseField(const string& repr) {
 
   ASSERT(int(parts.size()) == (WIDTH-2)*(HEIGHT-2));
   unique_ptr<Field> field(new Field());
+  int ply = 0;
   for (int i = 0; i < int(parts.size()); i++) {
     int pos = i + WIDTH + 1 + 2 * (i / (WIDTH-2));
     field->walls[pos] = 0;
@@ -55,6 +56,7 @@ unique_ptr<Field> ParseField(const string& repr) {
       field->walls[pos] = 0;
     } else if (parts[i] == "X" || parts[i] == "x") {
       field->walls[pos] = 1;
+      ply++;
     } else if (parts[i] == "0") {
       field->bots[0] = pos;
       field->walls[pos] = 1;
@@ -67,6 +69,7 @@ unique_ptr<Field> ParseField(const string& repr) {
     }
   }
   field->hash = field->ComputeHash();
+  field->ply = ply;
   return field;
 }
 

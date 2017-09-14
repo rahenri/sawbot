@@ -7,4 +7,4 @@ const std::string* TeeInput = NewStringFlag("tee-input", "");
 
 const bool* AnalysisMode = NewBoolFlag("analysis", false);
 
-const int* MaxDepth = NewIntFlag("max-depth", 1000);
+const int* MaxDepth = NewIntFlag("max-depth", 100);

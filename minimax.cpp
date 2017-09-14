@@ -60,14 +60,15 @@ class MiniMax {
    // - ply: how many moves have been playes so far in the game.
    // - time_limit: specifies the maximum amount of time to spend on the search in milliseconds, no time limit if zero.
    // - interruptable: whether the search can be interrupted if the is any data available in the input, used for pondering.
-  MiniMax(const Field* field, int player, int ply, int time_limit_ms, bool interruptable, int ponder)
+  MiniMax(const Field& field, int player, int ply, int time_limit_ms, bool interruptable, int ponder)
     : interruptable(interruptable),
-      field(*field),
+      field(field),
       player(player),
-      ply(ply),
+      ply(ply)
       // depth_shortening(*DepthShortening),
       // shortening_threshold(*ShorteningThreshold),
-      pondering(ponder) {
+      // pondering(ponder)
+      {
 
     if (time_limit_ms == 0) {
       this->has_deadline = false;
@@ -115,7 +116,7 @@ class MiniMax {
 
     this->nodes++;
 
-    if (!pondering) {
+    //if (!pondering) {
       auto slot = TopLevelHashTableSingleton.Get(&field);
       if (slot != nullptr && slot->depth >= depth) {
         out.score = slot->score;
@@ -126,24 +127,24 @@ class MiniMax {
         out.nodes = this->nodes;
         return out;
       }
-    }
+    //}
 
-    int first_move = -1;
-    auto memo = HashTableSingleton.Get(&field);
-    if (memo != nullptr) {
-      // First level is ok to return a hash hit for higher depth if not pondering.
-      // When pondering, we want to do a full search on all possible responses
-      if (!pondering && memo->depth >= depth) {
-        if (memo->lower_bound == memo->upper_bound) {
-          out.score = memo->lower_bound;
-          out.moves[0] = memo->move;
-          out.move_count = 1;
-          out.nodes = this->nodes;
-          return out;
-        }
-      }
-      first_move = memo->move;
-    }
+    // int first_move = -1;
+    // auto memo = HashTableSingleton.Get(&field);
+    // if (memo != nullptr) {
+    //   // First level is ok to return a hash hit for higher depth if not pondering.
+    //   // When pondering, we want to do a full search on all possible responses
+    //   if (!pondering && memo->depth >= depth) {
+    //     if (memo->lower_bound == memo->upper_bound) {
+    //       out.score = memo->lower_bound;
+    //       out.moves[0] = memo->move;
+    //       out.move_count = 1;
+    //       out.nodes = this->nodes;
+    //       return out;
+    //     }
+    //   }
+    //   first_move = memo->move;
+    // }
 
     if (*AnalysisMode) {
       cerr << "-------------------------------" << endl;
@@ -178,8 +179,8 @@ class MiniMax {
       }
     }
 
-    HashTableSingleton.Insert(&field, out.score, out.score, depth, out.moves[0]);
-    TopLevelHashTableSingleton.Insert(&field, out.score, depth, out.moves, out.move_count);
+    // HashTableSingleton.Insert(&field, out.score, out.score, depth, out.moves[0]);
+    // TopLevelHashTableSingleton.Insert(&field, out.score, depth, out.moves, out.move_count);
 
     out.nodes = nodes;
     sort(out.moves, out.moves+out.move_count);
@@ -229,12 +230,12 @@ class MiniMax {
 
     if (ply%2==1 && field.Over()) {
       int winner = field.Winner();
-      if (winner == player) {
+      if (winner == -1) {
+        score = -1;
+      } else if (winner == player) {
         score = MAX_SCORE - ply;
-      } else if (winner == (player^1)) {
-        score = -MAX_SCORE+ply;
       } else {
-        score = 0;
+        score = -MAX_SCORE+ply;
       }
     } else {
       depth--;
@@ -262,15 +263,15 @@ class MiniMax {
       //   }
       // }
       // if (full_search) {
-      if (pondering) {
-        pondering = false;
-        // Perform a complete search if pondering.
-        auto result = SearchMove();
-        score = -result.score;
-        pondering = true;
-      } else {
+      // if (pondering) {
+      //   pondering = false;
+      //   // Perform a complete search if pondering.
+      //   auto result = SearchMove();
+      //   score = -result.score;
+      //   pondering = true;
+      // } else {
         score = -this->DeepEval(-beta, -alpha);
-      }
+      //}
       // }
       // if (PrintSearchTree) {
       //   printer->Attr("score", score);
@@ -298,29 +299,29 @@ class MiniMax {
       }
     }
 
-    int first_cell = -1;
-    if (depth >= HashMinDepth) {
-      auto memo = HashTableSingleton.Get(&field);
-      if (memo != nullptr) {
-        // if (PrintSearchTree) {
-        //   printer->Attr("hash_hit", true);
-        //   printer->Attr("hash_lower_bound", memo->lower_bound);
-        //   printer->Attr("hash_upper_bound", memo->upper_bound);
-        // }
-        if (memo->depth == depth) {
-          if (memo->lower_bound == memo->upper_bound) {
-            return memo->lower_bound;
-          }
-          if (memo->lower_bound > beta) {
-            return memo->lower_bound;
-          }
-          if (memo->upper_bound < alpha) {
-            return memo->upper_bound;
-          }
-        }
-        first_cell = memo->move;
-      }
-    }
+    // int first_move = -1;
+    // if (depth >= HashMinDepth) {
+    //   auto memo = HashTableSingleton.Get(&field);
+    //   if (memo != nullptr) {
+    //     // if (PrintSearchTree) {
+    //     //   printer->Attr("hash_hit", true);
+    //     //   printer->Attr("hash_lower_bound", memo->lower_bound);
+    //     //   printer->Attr("hash_upper_bound", memo->upper_bound);
+    //     // }
+    //     if (memo->depth == depth) {
+    //       if (memo->lower_bound == memo->upper_bound) {
+    //         return memo->lower_bound;
+    //       }
+    //       if (memo->lower_bound > beta) {
+    //         return memo->lower_bound;
+    //       }
+    //       if (memo->upper_bound < alpha) {
+    //         return memo->upper_bound;
+    //       }
+    //     }
+    //     first_move = memo->move;
+    //   }
+    // }
 
     int move_count = 0;
     int moves[4];
@@ -330,7 +331,7 @@ class MiniMax {
       // if (PrintSearchTree) {
       //   printer->Attr("leaf", true);
       // }
-      best_score = field.Eval();
+      best_score = field.Eval(player);
       if (best_score > beta) {
         return best_score;
       }
@@ -340,7 +341,7 @@ class MiniMax {
     }
 
     // if (depth >= MinDepthSortMoves) {
-    //   if (first_cell != -1) {
+    //   if (first_move != -1) {
     //     SortMoves(moves+1, move_count-1);
     //   } else {
     //     SortMoves(moves, move_count);
@@ -349,12 +350,12 @@ class MiniMax {
 
     int best_move = -1;
     for (int i = 0; i < move_count; i++) {
-      int cell = moves[i];
+      int move = moves[i];
 
-      int score = this->DeepEvalRec(cell, max(alpha, best_score+1), beta);
+      int score = this->DeepEvalRec(move, max(alpha, best_score+1), beta);
       if (score > best_score) {
         best_score = score;
-        best_move = cell;
+        best_move = move;
         if (score > beta) {
           break;
         }
@@ -392,7 +393,7 @@ class MiniMax {
   // const int depth_shortening;
   // const int shortening_threshold;
 
-  bool pondering;
+  // bool pondering;
 
   // SearchTreePrinter* printer;
 
@@ -411,13 +412,17 @@ std::ostream& operator<<(std::ostream& stream, const SearchResult& res) {
 }
 
 int SearchResult::RandomMove() const {
-  return moves[RandN(move_count)];
+  if (move_count > 0) {
+    return moves[RandN(move_count)];
+  } else {
+    return LEFT;
+  }
 }
 
 // Compute the best move for the given field and player.
 // This is the entry point for the AI search.
-SearchResult SearchMove(const Field *field, int player, SearchOptions opt) {
-  int ply = field->ply;
+SearchResult SearchMove(const Field &field, int player, SearchOptions opt) {
+  int ply = field.ply;
 
   SearchResult out;
 
@@ -447,7 +452,7 @@ SearchResult SearchMove(const Field *field, int player, SearchOptions opt) {
   MiniMax mm(field, player, ply, opt.time_limit_ms, opt.interruptable, opt.pondering);
   out.move_count = 0;
   auto start = steady_clock::now();
-
+  
   // Iterative deepening search. It is better than fixed deptch because of time
   // constraints, ie, fixed depth can take a variable amount of depth. It is
   // also better to populate the cache with good moves, which improves

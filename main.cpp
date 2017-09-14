@@ -14,6 +14,8 @@
 #include "flags.h"
 #include "random.h"
 #include "heuristic.h"
+#include "minimax.h"
+#include "hash_table.h"
 
 using namespace std;
 
@@ -90,22 +92,11 @@ struct Game {
     return true;
   }
 
-  bool handleAction(int time_remaining) {
-    auto field = ParseField(field_repr);
-    if (!field) {
-      return false;
-    }
-    PrintField(*field);
-
-    int time_to_move = time_remaining / (MAX_ROUNDS - round + 1) + settings.time_per_move;
-    int time_limit = min(time_to_move, time_remaining - 25);
-    cerr << "Time remaining: " << time_remaining << '\n';
-    cerr << "Time limit: " << time_limit << '\n';
-
+  int pickRandomMove(const Field& field) {
     int moves[4];
     // Just pick a random move
-    int n = field->ValidMoves(settings.my_id, moves);
-    int mid = 0;
+    int n = field.ValidMoves(settings.my_id, moves);
+    int move = 0;
     if (n > 0) {
       int total = 0;
       for (int i = 0; i < n; i++) {
@@ -115,14 +106,38 @@ struct Game {
       for (int i = 0; i < n; i++) {
         r -= heuristic_weights.dir_weights[moves[i]];
         if (r < 0) {
-          mid = moves[i];
+          move = moves[i];
           break;
         }
       }
       ASSERT(r < 0);
     }
+    return move;
+  }
 
-    cout << move_names[mid] << endl << flush;
+  int computeBestMove(const Field& field, int time_limit_ms) {
+    SearchOptions opts;
+    opts.time_limit_ms = time_limit_ms;
+    auto result = SearchMove(field, settings.my_id, opts);
+    return result.RandomMove();
+  }
+
+  bool handleAction(int time_remaining_ms) {
+    auto field = ParseField(field_repr);
+    if (!field) {
+      return false;
+    }
+    PrintField(*field);
+
+    int time_to_move_ms = time_remaining_ms / (MAX_ROUNDS - round + 1) + settings.time_per_move;
+    int time_limit_ms = min(time_to_move_ms, time_remaining_ms - 25);
+    cerr << "Time remaining: " << time_remaining_ms << '\n';
+    cerr << "Time limit: " << time_limit_ms << '\n';
+
+    // int move = pickRandomMove(*field);
+    int move = computeBestMove(*field, time_limit_ms);
+
+    cout << move_names[move] << endl << flush;
     return true;
   }
 
@@ -179,6 +194,7 @@ int main(int argc, const char** argv) {
     return 1;
   }
   InitHashConstants();
+  HashTableSingleton.Init(100000);
   Game game;
   string line;
   fstream tee;

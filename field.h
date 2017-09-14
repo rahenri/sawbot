@@ -82,7 +82,7 @@ struct Field {
 
     hash ^= bot_hash[player][bots[player]];
 
-    bots[player] += dd[player];
+    bots[player] += dd[dir];
 
     if (walls[bots[player]]) {
       died[player] = true;
@@ -100,18 +100,19 @@ struct Field {
 
   inline void UnmoveBot(int player, int dir) {
 
+    walls[bots[player]]--;
+    if (not walls[bots[player]]) {
+      hash ^= field_hash[bots[player]];
+    }
+
     hash ^= bot_hash[player][bots[player]];
 
-    bots[player] -= dd[player];
+    bots[player] -= dd[dir];
 
     died[player] = false;
 
     hash ^= bot_hash[player][bots[player]];
 
-    walls[bots[player]]--;
-    if (not walls[bots[player]]) {
-      hash ^= field_hash[bots[player]];
-    }
     ply--;
   }
 
@@ -145,7 +146,7 @@ struct Field {
     return n;
   }
 
-  int Eval() const {
+  int Eval(int player) const {
     // Come up with a good scoring function.
     return 0;
   }
