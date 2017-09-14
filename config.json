@@ -4,14 +4,14 @@
       "name": "sawbot",
       "cmd": "./sawbot"
     }, {
+      "name": "candidate",
+      "cmd": "./sawbot-candidate"
+    }, {
       "name": "v1",
       "cmd": "./sawbot-v1"
     }, {
       "name": "v2",
       "cmd": "./sawbot-v2"
-    }, {
-      "name": "candidate",
-      "cmd": "./sawbot-candidate"
     }, {
       "name": "train-bot",
       "cmd": "./sawbot-candidate"

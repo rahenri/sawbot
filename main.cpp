@@ -148,7 +148,7 @@ struct Game {
       if (!(stream >> time_remaining)) {
         return false;
       }
-      handleAction(time_remaining);
+      return handleAction(time_remaining);
     } else if(command == "weights") {
       map<string, int> values;
       int value;

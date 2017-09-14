@@ -4,7 +4,7 @@ all: $(BINARY)
 
 CXXFLAGS=-Wall --std=c++1y -Werror -ggdb3 -D_LOCAL -march=native -O3
 
-OBJECTS = field.o utils.o random.o cmd_args.o flags.o
+OBJECTS = field.o utils.o random.o cmd_args.o flags.o minimax.o hash_table.o interruption.o
 MAIN_OBJECT = main.o
 
 

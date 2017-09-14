@@ -7,4 +7,8 @@ extern const bool* Verbose;
 
 extern const std::string* TeeInput;
 
+extern const bool* AnalysisMode;
+
+extern const int *MaxDepth;
+
 #endif

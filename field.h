@@ -37,91 +37,117 @@ struct Field {
 
   uint64_t hash = 0;
 
-  // 0 - no winner
-  // 1 - player 1 won
-  // 2 - player 2 won
-  // 3 - draw
-  int8_t winner = 0;
+  int ply = 0;
+
+  bool died[2] = {false};
 
   Field() {
+    // Put wall fence
+    for (int i = 0; i < WIDTH; i++) {
+      walls[i] = 1;
+      walls[i+FIELD_SIZE-WIDTH] = 1;
+    }
+    for (int i = 0; i < HEIGHT; i++) {
+      walls[i*WIDTH] = 1;
+      walls[i*WIDTH+WIDTH-1] = 1;
+    }
   }
 
-  inline bool MoveBots(const int dir[2]) {
+  // inline void MoveBots(const int dir[2]) {
 
-    hash ^= bot_hash[0][bots[0]];
-    hash ^= bot_hash[1][bots[1]];
+  //   hash ^= bot_hash[0][bots[0]];
+  //   hash ^= bot_hash[1][bots[1]];
 
+  //   bots[0] += dir[0];
+  //   bots[1] += dir[1];
 
-    bots[0] += dir[0];
-    bots[1] += dir[1];
+  //   if (walls[bots[0]]) {
+  //     died[0] = true;
+  //   }
+  //   if (walls[bots[1]]) {
+  //     died[1] = true;
+  //   }
 
-    bool died[2];
+  //   walls[bots[0]]++;
+  //   walls[bots[1]]++;
 
-    if (walls[bots[0]] == 1) {
-      died[0] = true;
+  //   hash ^= bot_hash[0][bots[0]];
+  //   hash ^= bot_hash[1][bots[1]];
+
+  //   hash ^= field_hash[bots[0]];
+  //   hash ^= field_hash[bots[1]];
+  // }
+
+  inline void MoveBot(int player, int dir) {
+
+    hash ^= bot_hash[player][bots[player]];
+
+    bots[player] += dd[player];
+
+    if (walls[bots[player]]) {
+      died[player] = true;
     }
-    if (walls[bots[1]] == 1) {
-      died[1] = true;
+
+    hash ^= bot_hash[player][bots[player]];
+
+    if (not walls[bots[player]]) {
+      hash ^= field_hash[bots[player]];
     }
+    walls[bots[player]]++;
 
-    if (died[0] or died[1]) {
-      if (died[0] and died[1]) {
-        winner = 3;
-      } else if (died[0]) {
-        winner = 1;
-      } else {
-        winner = 2;
-      }
+    ply++;
+  }
+
+  inline void UnmoveBot(int player, int dir) {
+
+    hash ^= bot_hash[player][bots[player]];
+
+    bots[player] -= dd[player];
+
+    died[player] = false;
+
+    hash ^= bot_hash[player][bots[player]];
+
+    walls[bots[player]]--;
+    if (not walls[bots[player]]) {
+      hash ^= field_hash[bots[player]];
     }
-
-    walls[bots[0]] = 1;
-    walls[bots[1]] = 1;
-
-    hash ^= bot_hash[0][bots[0]];
-    hash ^= bot_hash[1][bots[1]];
-
-    hash ^= field_hash[bots[0]];
-    hash ^= field_hash[bots[1]];
-
-    return true;
+    ply--;
   }
 
   inline bool Over() const {
-    return winner != 0;
+    return died[0] or died[1];
   }
 
+  // Returns the player ID who won, returns -1 if drawn.
   inline int Winner() const {
-    return winner;
+    if (bots[0] == bots[1]) {
+      return -1;
+    }
+    if (!died[0]) {
+      return 0;
+    }
+    if (!died[1]) {
+      return 1;
+    }
+    return -1;
   }
 
   inline int ValidMoves(int player, int moves[4]) const {
     int n = 0;
-    int pos = bots[player];
-    if (pos >= WIDTH) {
-      int p = pos + dd[UP];
-      if (walls[p] == 0) {
-        moves[n++] = UP;
+    for (int i = 0; i < 4; i++) {
+      int p = bots[player] + dd[i];
+      if (walls[p]) {
+        continue;
       }
-    }
-    if (pos < FIELD_SIZE - WIDTH) {
-      int p = pos + dd[DOWN];
-      if (walls[p] == 0) {
-        moves[n++] = DOWN;
-      }
-    }
-    if (pos % WIDTH > 0) {
-      int p = pos + dd[LEFT];
-      if (walls[p] == 0) {
-        moves[n++] = LEFT;
-      }
-    }
-    if (pos % WIDTH < WIDTH - 1) {
-      int p = pos + dd[RIGHT];
-      if (walls[p] == 0) {
-        moves[n++] = RIGHT;
-      }
+      moves[n++] = i;
     }
     return n;
+  }
+
+  int Eval() const {
+    // Come up with a good scoring function.
+    return 0;
   }
 
   uint64_t ComputeHash() const;
