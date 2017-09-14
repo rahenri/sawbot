@@ -7,11 +7,13 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <map>
 
 #include "cmd_args.h"
 #include "field.h"
 #include "flags.h"
 #include "random.h"
+#include "heuristic.h"
 
 using namespace std;
 
@@ -71,6 +73,8 @@ struct Game {
 
   Settings settings;
 
+  HeuristicWeights heuristic_weights;
+
   Game() { }
 
   bool handleUpdate(istream& stream) {
@@ -103,7 +107,19 @@ struct Game {
     int n = field->ValidMoves(settings.my_id, moves);
     int mid = 0;
     if (n > 0) {
-      mid = moves[RandN(n)];
+      int total = 0;
+      for (int i = 0; i < n; i++) {
+        total += heuristic_weights.dir_weights[moves[i]];
+      }
+      int r = RandN(total);
+      for (int i = 0; i < n; i++) {
+        r -= heuristic_weights.dir_weights[moves[i]];
+        if (r < 0) {
+          mid = moves[i];
+          break;
+        }
+      }
+      ASSERT(r < 0);
     }
 
     cout << move_names[mid] << endl << flush;
@@ -133,6 +149,21 @@ struct Game {
         return false;
       }
       handleAction(time_remaining);
+    } else if(command == "weights") {
+      map<string, int> values;
+      int value;
+      string name;
+      cerr << "Updating weights:";
+      while (stream >> name >> value) {
+        values[name] = value;
+        cerr << ' ' << name << ": " << value;
+      }
+      cerr << '\n';
+      HeuristicWeights weights;
+      weights.from_map(values);
+      heuristic_weights = weights;
+      return true;
+
     } else {
       return false;
     }
@@ -158,7 +189,10 @@ int main(int argc, const char** argv) {
     if (tee.good()) {
       tee << line << '\n' << flush;
     }
-    game.processNextCommand(line);
+    if (!game.processNextCommand(line)) {
+      cerr << "Failed to process command: " << line << endl;
+      return 1;
+    }
 	}
 	return 0;
 }

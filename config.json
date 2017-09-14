@@ -4,14 +4,40 @@
       "name": "sawbot",
       "cmd": "./sawbot"
     }, {
+      "name": "v1",
+      "cmd": "./sawbot-v1"
+    }, {
+      "name": "v2",
+      "cmd": "./sawbot-v2"
+    }, {
       "name": "candidate",
+      "cmd": "./sawbot-candidate"
+    }, {
+      "name": "train-bot",
       "cmd": "./sawbot-candidate"
     }
   ],
-  "train_bot": "candidate",
+  "train_bot": "train-bot",
   "pairs": [
-    ["sawbot", "candidate"]
+    ["v2", "candidate"]
   ],
   "trainable_weights": [
+    {
+      "name": "up_weight",
+      "min": 1,
+      "max": 10000
+    }, {
+      "name": "left_weight",
+      "min": 1,
+      "max": 10000
+    }, {
+      "name": "right_weight",
+      "min": 1,
+      "max": 10000
+    }, {
+      "name": "down_weight",
+      "min": 1,
+      "max": 10000
+    }
   ]
 }
