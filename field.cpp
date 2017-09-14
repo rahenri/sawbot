@@ -52,7 +52,7 @@ unique_ptr<Field> ParseField(const string& repr) {
     field->walls[pos] = 0;
     if (parts[pos] == ".") {
       field->walls[pos] = 0;
-    } else if (parts[pos] == "X") {
+    } else if (parts[pos] == "X" || parts[pos] == "x") {
       field->walls[pos] = 1;
     } else if (parts[pos] == "0") {
       field->bots[0] = pos;
@@ -61,7 +61,7 @@ unique_ptr<Field> ParseField(const string& repr) {
       field->bots[1] = pos;
       field->walls[pos] = 1;
     } else {
-      cerr << "Invalid field" << endl;
+      cerr << "Invalid field: " << parts[pos] << endl;
       return nullptr;
     }
   }

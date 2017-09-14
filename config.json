@@ -1,0 +1,17 @@
+{
+  "bots": [
+    {
+      "name": "sawbot",
+      "cmd": "./sawbot"
+    }, {
+      "name": "candidate",
+      "cmd": "./sawbot-candidate"
+    }
+  ],
+  "train_bot": "candidate",
+  "pairs": [
+    ["sawbot", "candidate"]
+  ],
+  "trainable_weights": [
+  ]
+}

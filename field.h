@@ -16,6 +16,11 @@ extern uint64_t field_hash[FIELD_SIZE];
 
 void InitHashConstants();
 
+static const int RIGHT = 0;
+static const int DOWN = 1;
+static const int LEFT = 2;
+static const int UP = 3;
+
 const int dd[4] = {
     1,       // right
     WIDTH,   // down
@@ -89,12 +94,32 @@ struct Field {
     return winner;
   }
 
-  inline int ValidMoves(int player, int dirs[4]) const {
+  inline int ValidMoves(int player, int moves[4]) const {
     int n = 0;
-    for (int d = 0; d < 4; d++) {
-      int p = bots[player] + dd[d];
-      if (walls[p] == 1) continue;
-      dirs[n++] = d;
+    int pos = bots[player];
+    if (pos >= WIDTH) {
+      int p = pos + dd[UP];
+      if (walls[p] == 0) {
+        moves[n++] = UP;
+      }
+    }
+    if (pos < FIELD_SIZE - WIDTH) {
+      int p = pos + dd[DOWN];
+      if (walls[p] == 0) {
+        moves[n++] = DOWN;
+      }
+    }
+    if (pos % WIDTH > 0) {
+      int p = pos + dd[LEFT];
+      if (walls[p] == 0) {
+        moves[n++] = LEFT;
+      }
+    }
+    if (pos % WIDTH < WIDTH - 1) {
+      int p = pos + dd[RIGHT];
+      if (walls[p] == 0) {
+        moves[n++] = RIGHT;
+      }
     }
     return n;
   }

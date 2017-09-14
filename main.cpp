@@ -25,8 +25,6 @@ struct Settings {
   int field_width = 20;
   int field_height = 14;
 
-  int max_rounds = 200;
-
   bool handleSettings(istream& stream) {
 		string type;
 		stream >> type;
@@ -57,8 +55,6 @@ struct Settings {
         cerr << "Field size not supported" << endl;
         return false;
       }
-		} else if (type == "max_rounds") {
-			return bool(stream >> max_rounds);
     } else {
       return false;
 		}
@@ -92,14 +88,23 @@ struct Game {
 
   bool handleAction(int time_remaining) {
     auto field = ParseField(field_repr);
+    if (!field) {
+      return false;
+    }
     PrintField(*field);
 
-    int time_to_move = time_remaining / (settings.max_rounds - round + 1) + settings.time_per_move;
+    int time_to_move = time_remaining / (MAX_ROUNDS - round + 1) + settings.time_per_move;
     int time_limit = min(time_to_move, time_remaining - 25);
     cerr << "Time remaining: " << time_remaining << '\n';
     cerr << "Time limit: " << time_limit << '\n';
 
-    int mid = 0; // TODO
+    int moves[4];
+    // Just pick a random move
+    int n = field->ValidMoves(settings.my_id, moves);
+    int mid = 0;
+    if (n > 0) {
+      mid = moves[RandN(n)];
+    }
 
     cout << move_names[mid] << endl << flush;
     return true;
