@@ -13,6 +13,9 @@
       "name": "v3",
       "cmd": "./sawbot-v3"
     }, {
+      "name": "v4",
+      "cmd": "./sawbot-v4"
+    }, {
       "name": "candidate",
       "cmd": "./sawbot-candidate"
     }, {

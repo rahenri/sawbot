@@ -31,7 +31,7 @@ const int dd[4] = {
 struct Field {
   // 0 - empty
   // 1 - full
-  int8_t walls[WIDTH*HEIGHT] = {0};
+  int8_t walls[FIELD_SIZE] = {0};
 
   int16_t bots[2] = {0, 0};
 
@@ -40,6 +40,9 @@ struct Field {
   int ply = 0;
 
   bool died[2] = {false};
+
+  int8_t flood[FIELD_SIZE];
+  int16_t queue[FIELD_SIZE];
 
   Field() {
     // Put wall fence
@@ -146,9 +149,28 @@ struct Field {
     return n;
   }
 
-  int Eval(int player) const {
-    // Come up with a good scoring function.
-    return 0;
+  int Eval(int player) {
+    int end = 0;
+    int start = 0;
+    int tally[2] = {0,0};
+    for (int i = 0; i < FIELD_SIZE; i++) flood[i]=0;
+    queue[end++] = bots[0];
+    queue[end++] = bots[1];
+    flood[bots[0]] = 0|4;
+    flood[bots[1]] = 1|4;
+    while (end > start) {
+      int p = queue[start++];
+      int o = flood[p]&1;
+      for (int i = 0; i < 4; i++) {
+        int np = p + dd[i];
+        if (walls[np] or flood[np]) continue;
+        flood[np] = o|4;
+        tally[o]++;
+        queue[end++] = np;
+      }
+    }
+    int score = tally[player]-tally[player^1];
+    return score;
   }
 
   uint64_t ComputeHash() const;
