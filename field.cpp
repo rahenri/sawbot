@@ -38,6 +38,7 @@ void PrintField(const Field& field) {
     field_str[y][x] = '0' + i;
   }
   cerr << "Bot1 pos: " << field.bots[0] << " Bot2 pos:" << field.bots[1] << '\n';
+  cerr << "Ply: " << field.ply << '\n';
   for (int y = 0; y < HEIGHT; y++) {
     cerr << field_str[y];
   }
@@ -95,7 +96,7 @@ uint64_t Field::ComputeHash() const {
   }
 
   for (int i = 0; i < FIELD_SIZE; i++) {
-    if (walls[i] == 1) {
+    if (walls[i]) {
       output ^= field_hash[i];
     }
   }

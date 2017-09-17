@@ -25,7 +25,7 @@
   ],
   "train_bot": "train-bot",
   "pairs": [
-    ["v3", "candidate"]
+    ["v4", "candidate"]
   ],
   "trainable_weights": [
     {

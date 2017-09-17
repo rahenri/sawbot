@@ -84,14 +84,12 @@ struct Field {
   inline void MoveBot(int player, int dir) {
 
     hash ^= bot_hash[player][bots[player]];
-
     bots[player] += dd[dir];
+    hash ^= bot_hash[player][bots[player]];
 
     if (walls[bots[player]]) {
       died[player] = true;
     }
-
-    hash ^= bot_hash[player][bots[player]];
 
     if (not walls[bots[player]]) {
       hash ^= field_hash[bots[player]];
@@ -109,12 +107,10 @@ struct Field {
     }
 
     hash ^= bot_hash[player][bots[player]];
-
     bots[player] -= dd[dir];
+    hash ^= bot_hash[player][bots[player]];
 
     died[player] = false;
-
-    hash ^= bot_hash[player][bots[player]];
 
     ply--;
   }
@@ -145,6 +141,13 @@ struct Field {
         continue;
       }
       moves[n++] = i;
+    }
+    if (n == 0) {
+      if (bots[player]%WIDTH < (WIDTH/2)) {
+        moves[n++] = RIGHT;
+      } else {
+        moves[n++] = LEFT;
+      }
     }
     return n;
   }

@@ -194,7 +194,7 @@ int main(int argc, const char** argv) {
     return 1;
   }
   InitHashConstants();
-  HashTableSingleton.Init(100000);
+  HashTableSingleton.Init(50000011);
   Game game;
   string line;
   fstream tee;
@@ -210,5 +210,6 @@ int main(int argc, const char** argv) {
       return 1;
     }
 	}
+  HashTableSingleton.PrintStats();
 	return 0;
 }

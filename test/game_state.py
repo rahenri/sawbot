@@ -39,6 +39,9 @@ class GameState:
     bot2 = (15-x1,y1)
     self.bots = [bot1, bot2]
 
+    for (x, y) in self.bots:
+        self.walls[y][x] = 1
+
   @classmethod
   def FromJSon(cls, static_data, mutable_data = None):
     names = static_data['names']

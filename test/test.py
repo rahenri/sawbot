@@ -415,8 +415,8 @@ def OneRound(params):
     # Get robots who are fighting (player1, player2)
     bots = [bot1.Run(round_id, 1), bot2.Run(round_id, 2)]
 
-    bots[0].InitTimer(10000, args.time_per_move)
-    bots[1].InitTimer(10000, args.time_per_move)
+    bots[0].InitTimer(args.timebank, args.time_per_move)
+    bots[1].InitTimer(args.timebank, args.time_per_move)
 
     # Simulate game init input
     bots[0].SendSettings('0')
@@ -472,6 +472,7 @@ if __name__ == '__main__':
   parser.add_argument('--action', default='eval', help='Action to take, either eval or train')
   parser.add_argument('--count', type=int, default=1000, help='Number of times to run the bots (Default: 1)')
   parser.add_argument('--time-per-move', type=int, default=100, help='Milliseconds added to time bank each turn (Default: 100)')
+  parser.add_argument('--timebank', type=int, default=10000, help='Milliseconds initial time in the time bank (Default: 10000)')
   parser.add_argument('--workers', type=int, default=workers, help='Number of parallel workers (Default: 1)')
   parser.add_argument('--history', default='history', help='Directory to store game history')
   parser.add_argument('--config', help='Config file with bots to test')

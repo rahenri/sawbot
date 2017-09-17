@@ -16,7 +16,7 @@
 
 using namespace std::chrono;
 
-static const int HashMinDepth = 2;
+static const int HashMinDepth = 0;
 
 // static const bool PrintSearchTree = false;
 
@@ -129,22 +129,22 @@ class MiniMax {
       }
     //}
 
-    // int first_move = -1;
-    // auto memo = HashTableSingleton.Get(&field);
-    // if (memo != nullptr) {
-    //   // First level is ok to return a hash hit for higher depth if not pondering.
-    //   // When pondering, we want to do a full search on all possible responses
-    //   if (!pondering && memo->depth >= depth) {
-    //     if (memo->lower_bound == memo->upper_bound) {
-    //       out.score = memo->lower_bound;
-    //       out.moves[0] = memo->move;
-    //       out.move_count = 1;
-    //       out.nodes = this->nodes;
-    //       return out;
-    //     }
-    //   }
-    //   first_move = memo->move;
-    // }
+    int first_move = -1;
+    auto memo = HashTableSingleton.Get(&field);
+    if (memo != nullptr) {
+      // First level is ok to return a hash hit for higher depth if not pondering.
+      // When pondering, we want to do a full search on all possible responses
+      if (/*!pondering &&*/ memo->depth >= depth) {
+        if (memo->lower_bound == memo->upper_bound) {
+          out.score = memo->lower_bound;
+          out.moves[0] = memo->move;
+          out.move_count = 1;
+          out.nodes = this->nodes;
+          return out;
+        }
+      }
+      first_move = memo->move;
+    }
 
     if (*AnalysisMode) {
       cerr << "-------------------------------" << endl;
@@ -154,7 +154,7 @@ class MiniMax {
     int moves[4];
     int move_count = field.ValidMoves(player, moves);
 
-    // Implement sorting
+    // TODO Implement sorting
     // if (depth >= MinDepthSortMoves) {
     //   if (first_cell != -1) {
     //     SortMoves(moves+1, move_count-1);
@@ -179,8 +179,8 @@ class MiniMax {
       }
     }
 
-    // HashTableSingleton.Insert(&field, out.score, out.score, depth, out.moves[0]);
-    // TopLevelHashTableSingleton.Insert(&field, out.score, depth, out.moves, out.move_count);
+    HashTableSingleton.Insert(&field, out.score, out.score, depth, out.moves[0]);
+    TopLevelHashTableSingleton.Insert(&field, out.score, depth, out.moves, out.move_count);
 
     out.nodes = nodes;
     sort(out.moves, out.moves+out.move_count);
@@ -225,6 +225,7 @@ class MiniMax {
     this->nodes++;
     this->checkInterruption();
 
+    auto save_hash = field.hash;
     field.MoveBot(player, move);
     int score;
 
@@ -282,6 +283,7 @@ class MiniMax {
       player ^= 1;
     }
     field.UnmoveBot(player, move);
+    ASSERT(save_hash == field.hash);
     return score;
   }
 
@@ -299,29 +301,29 @@ class MiniMax {
       }
     }
 
-    // int first_move = -1;
-    // if (depth >= HashMinDepth) {
-    //   auto memo = HashTableSingleton.Get(&field);
-    //   if (memo != nullptr) {
-    //     // if (PrintSearchTree) {
-    //     //   printer->Attr("hash_hit", true);
-    //     //   printer->Attr("hash_lower_bound", memo->lower_bound);
-    //     //   printer->Attr("hash_upper_bound", memo->upper_bound);
-    //     // }
-    //     if (memo->depth == depth) {
-    //       if (memo->lower_bound == memo->upper_bound) {
-    //         return memo->lower_bound;
-    //       }
-    //       if (memo->lower_bound > beta) {
-    //         return memo->lower_bound;
-    //       }
-    //       if (memo->upper_bound < alpha) {
-    //         return memo->upper_bound;
-    //       }
-    //     }
-    //     first_move = memo->move;
-    //   }
-    // }
+    int first_move = -1;
+    if (depth >= HashMinDepth) {
+      auto memo = HashTableSingleton.Get(&field);
+      if (memo != nullptr) {
+        // if (PrintSearchTree) {
+        //   printer->Attr("hash_hit", true);
+        //   printer->Attr("hash_lower_bound", memo->lower_bound);
+        //   printer->Attr("hash_upper_bound", memo->upper_bound);
+        // }
+        if (memo->depth == depth) {
+          if (memo->lower_bound == memo->upper_bound) {
+            return memo->lower_bound;
+          }
+          if (memo->lower_bound > beta) {
+            return memo->lower_bound;
+          }
+          if (memo->upper_bound < alpha) {
+            return memo->upper_bound;
+          }
+        }
+        first_move = memo->move;
+      }
+    }
 
     int move_count = 0;
     int moves[4];
@@ -422,8 +424,6 @@ int SearchResult::RandomMove() const {
 // Compute the best move for the given field and player.
 // This is the entry point for the AI search.
 SearchResult SearchMove(const Field &field, int player, SearchOptions opt) {
-  int ply = field.ply;
-
   SearchResult out;
 
   // Lookup opening table, return a move from there if we find a hit.
@@ -449,7 +449,7 @@ SearchResult SearchMove(const Field &field, int player, SearchOptions opt) {
   //   }
   // }
 
-  MiniMax mm(field, player, ply, opt.time_limit_ms, opt.interruptable, opt.pondering);
+  MiniMax mm(field, player, field.ply, opt.time_limit_ms, opt.interruptable, opt.pondering);
   out.move_count = 0;
   auto start = steady_clock::now();
   
