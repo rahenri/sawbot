@@ -36,6 +36,7 @@ class HashTable {
       this->size = size;
       this->data = new BoardMemo[size];
       memset(this->data, 0, sizeof(BoardMemo) * size);
+      cerr << "Done initializing hash table" << endl;
     }
 
     BoardMemo* Get(const Field* board) {

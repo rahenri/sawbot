@@ -194,13 +194,14 @@ int main(int argc, const char** argv) {
     return 1;
   }
   InitHashConstants();
-  HashTableSingleton.Init(50000011);
+  HashTableSingleton.Init(13900011);
   Game game;
   string line;
   fstream tee;
   if (!TeeInput->empty()) {
     tee.open(*TeeInput, iostream::out);
   }
+  cerr << "Bot ready to process input" << endl;
   while (getline(cin, line)) {
     if (tee.good()) {
       tee << line << '\n' << flush;
