@@ -17,6 +17,7 @@
 using namespace std::chrono;
 
 static const int HashMinDepth = 0;
+static const int MinDepthSortMoves = 0;
 
 // static const bool PrintSearchTree = false;
 
@@ -47,8 +48,29 @@ struct MoveSorter {
   }
 };
 
-inline void SortMoves(uint8_t* moves, int count) {
-  sort(moves, moves+count, MoveSorter());
+// inline void SortMoves(uint8_t* moves, int count) {
+//   sort(moves, moves+count, MoveSorter());
+// }
+
+inline void SortMoves(int* moves, int count, int first_move) {
+  if (first_move == -1 || count <= 1) {
+    return;
+  }
+
+  int first_move_idx = -1;
+  for (int i = 0; i < count; i++) {
+    if (moves[i] == first_move) {
+      first_move_idx = i;
+      break;
+    }
+  }
+  if (first_move_idx == -1) {
+    return;
+  }
+  for (int i = first_move_idx - 1; i >= 0; i--) {
+    moves[i+1] = moves[i];
+  }
+  moves[0] = first_move;
 }
 
 // The MiniMax class contains all state being used when search the tree of moves.
@@ -154,14 +176,9 @@ class MiniMax {
     int moves[4];
     int move_count = field.ValidMoves(player, moves);
 
-    // TODO Implement sorting
-    // if (depth >= MinDepthSortMoves) {
-    //   if (first_cell != -1) {
-    //     SortMoves(moves+1, move_count-1);
-    //   } else {
-    //     SortMoves(moves, move_count);
-    //   }
-    // }
+    if (depth >= MinDepthSortMoves) {
+      SortMoves(moves, move_count, first_move);
+    }
 
     for (int i = 0; i < move_count; i++) {
       int move = moves[i];
@@ -342,13 +359,9 @@ class MiniMax {
       move_count = field.ValidMoves(player, moves);
     }
 
-    // if (depth >= MinDepthSortMoves) {
-    //   if (first_move != -1) {
-    //     SortMoves(moves+1, move_count-1);
-    //   } else {
-    //     SortMoves(moves, move_count);
-    //   }
-    // }
+    if (depth >= MinDepthSortMoves) {
+      SortMoves(moves, move_count, first_move);
+    }
 
     int best_move = -1;
     for (int i = 0; i < move_count; i++) {
