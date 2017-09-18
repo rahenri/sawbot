@@ -16,7 +16,7 @@
 
 using namespace std::chrono;
 
-static const int HashMinDepth = 0;
+static const int HashMinDepth = 2;
 static const int MinDepthSortMoves = 0;
 
 // static const bool PrintSearchTree = false;

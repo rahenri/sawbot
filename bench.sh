@@ -2,4 +2,4 @@
 
 make
 
-time ./sawbot --max-depth 24  < samples/bench.in
+time ./sawbot --max-depth 23  < samples/bench.in
