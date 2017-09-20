@@ -14,7 +14,7 @@ void PrintField(const Field& field) {
   for (int y = 0; y < HEIGHT; y++) {
     for (int x = 0; x < WIDTH; x++) {
       int pos = (x) + (y)*WIDTH;
-      char c = ' ';
+      char c = '.';
       if ((y == 0 or y == HEIGHT-1) and (x == 0 or x == WIDTH-1)) {
         c = '+';
       } else if (y == 0 or y == HEIGHT-1) {
@@ -39,6 +39,7 @@ void PrintField(const Field& field) {
   }
   cerr << "Bot1 pos: " << field.bots[0] << " Bot2 pos:" << field.bots[1] << '\n';
   cerr << "Ply: " << field.ply << '\n';
+  cerr << "Eval: " << field.Eval(0) << '\n';
   for (int y = 0; y < HEIGHT; y++) {
     cerr << field_str[y];
   }

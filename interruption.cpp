@@ -1,5 +1,6 @@
 #include <atomic>
 #include <cstring>
+#include <iostream>
 #include <signal.h>
 
 #include "interruption.h"
@@ -12,6 +13,11 @@ static void HandleInterrupt(int sig) {
   interruption_requested++;
 }
 
+static void HandleSigsev(int sig) {
+  cerr << "Crashed!" << endl;
+  exit(1);
+}
+
 bool InterruptRequested() {
   if (interruption_requested > 0) {
     interruption_requested--;
@@ -21,10 +27,7 @@ bool InterruptRequested() {
 }
 
 void InitSignals() {
-  struct sigaction int_handler;
-  memset(&int_handler, 0, sizeof(int_handler));
+  signal(SIGSEGV, HandleSigsev);
 
-  int_handler.sa_handler = HandleInterrupt;
-
-  sigaction(SIGINT, &int_handler, 0);
+  signal(SIGINT, HandleInterrupt);
 }

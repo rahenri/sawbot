@@ -8,3 +8,5 @@ const std::string* TeeInput = NewStringFlag("tee-input", "");
 const bool* AnalysisMode = NewBoolFlag("analysis", false);
 
 const int* MaxDepth = NewIntFlag("max-depth", 100);
+
+const int* HashSize = NewIntFlag("hash-size", 10000011);

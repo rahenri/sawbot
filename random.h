@@ -27,8 +27,6 @@ inline float RandFloat(float b) {
   return distribution(generator);
 }
 
-inline void RandSeed(int64_t seed) {
-  generator.seed(seed);
-}
+void RandSeed(int64_t seed);
 
 #endif

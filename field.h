@@ -41,8 +41,8 @@ struct Field {
 
   bool died[2] = {false};
 
-  int8_t flood[FIELD_SIZE];
-  int16_t queue[FIELD_SIZE];
+  mutable uint16_t dists[2][FIELD_SIZE];
+  mutable int16_t queue[FIELD_SIZE];
 
   Field() {
     // Put wall fence
@@ -152,27 +152,35 @@ struct Field {
     return n;
   }
 
-  int Eval(int player) {
-    int end = 0;
-    int start = 0;
-    int tally[2] = {0,0};
-    for (int i = 0; i < FIELD_SIZE; i++) flood[i]=0;
-    queue[end++] = bots[0];
-    queue[end++] = bots[1];
-    flood[bots[0]] = 0|4;
-    flood[bots[1]] = 1|4;
-    while (end > start) {
-      int p = queue[start++];
-      int o = flood[p]&1;
-      for (int i = 0; i < 4; i++) {
-        int np = p + dd[i];
-        if (walls[np] or flood[np]) continue;
-        flood[np] = o|4;
-        tally[o]++;
-        queue[end++] = np;
+  int Eval(int player) const {
+    for (int p = 0; p < 2; p++) {
+      int end = 0;
+      int start = 0;
+      for (int i = 0; i < FIELD_SIZE; i++) dists[p][i]=0xffff;
+      if (died[p]) continue;
+      queue[end++] = bots[p];
+      dists[p][bots[p]] = 0;
+      while (end > start) {
+        int pos = queue[start++];
+        auto dist = dists[p][pos]+1;
+        for (int i = 0; i < 4; i++) {
+          int npos = pos + dd[i];
+          if (walls[npos] or dists[p][npos]!=0xffff) continue;
+          dists[p][npos] = dist;
+          queue[end++] = npos;
+        }
       }
     }
-    int score = tally[player]-tally[player^1];
+    int score = 0;
+    for (int i = 0; i < FIELD_SIZE; i++) {
+      int d1 = dists[player][i];
+      int d2 = dists[player^1][i];
+      if (d1 < d2) {
+        score ++;
+      } else if (d2 < d1) {
+        score --;
+      }
+    }
     return score;
   }
 

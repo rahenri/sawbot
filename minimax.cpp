@@ -27,9 +27,6 @@ struct TimeLimitExceededException {
 struct IntSignalException {
 };
 
-struct InputException {
-};
-
 // unique_ptr<SearchTreePrinter> search_tree_printer_single;
 
 // SearchTreePrinter* tree_printer() {
@@ -82,11 +79,11 @@ class MiniMax {
    // - ply: how many moves have been playes so far in the game.
    // - time_limit: specifies the maximum amount of time to spend on the search in milliseconds, no time limit if zero.
    // - interruptable: whether the search can be interrupted if the is any data available in the input, used for pondering.
-  MiniMax(const Field& field, int player, int ply, int time_limit_ms, bool interruptable, int ponder)
-    : interruptable(interruptable),
-      field(field),
+  MiniMax(const Field& field, int player, int ply, int time_limit_ms, int ponder, bool* interrupt_flag)
+    : field(field),
       player(player),
-      ply(ply)
+      ply(ply),
+      interrupt_flag(interrupt_flag)
       // depth_shortening(*DepthShortening),
       // shortening_threshold(*ShorteningThreshold),
       // pondering(ponder)
@@ -105,13 +102,6 @@ class MiniMax {
     // }
   }
 
-  // Set the maximum search depth, used for iterative deepening search, where a
-  // sequence of searches is performed from the same position at deeper and
-  // deeper depth.
-  void SetMaxDepth(int depth) {
-    this->depth = depth;
-  }
-
   // Search the best move from the given paramters given in the constructor.
   // It can throw exception TimeLimitExceeded if time spent exeeced the time
   // limit given in the constricutor.
@@ -122,7 +112,8 @@ class MiniMax {
   // search tree compared to the rest. Deduping repeated logic by refactoring
   // them out into functions or merging these functions proved to be less
   // efficient.
-  SearchResult SearchMove() {
+  SearchResult SearchMove(int depth) {
+    this->depth = depth;
     // if (PrintSearchTree) {
     //   printer->Push(&field);
     //   printer->Attr("player", field.Turn());
@@ -156,21 +147,16 @@ class MiniMax {
     if (memo != nullptr) {
       // First level is ok to return a hash hit for higher depth if not pondering.
       // When pondering, we want to do a full search on all possible responses
-      if (/*!pondering &&*/ memo->depth >= depth) {
-        if (memo->lower_bound == memo->upper_bound) {
-          out.score = memo->lower_bound;
-          out.moves[0] = memo->move;
-          out.move_count = 1;
-          out.nodes = this->nodes;
-          return out;
-        }
-      }
+      // if (/*!pondering &&*/ memo->depth >= depth) {
+      //   if (memo->lower_bound == memo->upper_bound) {
+      //     out.score = memo->lower_bound;
+      //     out.moves[0] = memo->move;
+      //     out.move_count = 1;
+      //     out.nodes = this->nodes;
+      //     return out;
+      //   }
+      // }
       first_move = memo->move;
-    }
-
-    if (*AnalysisMode) {
-      cerr << "-------------------------------" << endl;
-      cerr << "Depth: " << depth << endl;
     }
 
     int moves[4];
@@ -184,9 +170,6 @@ class MiniMax {
       int move = moves[i];
       int alpha = (*AnalysisMode) ? -MAX_SCORE : out.score;
       int score = this->DeepEvalRec(moves[i], alpha, MAX_SCORE);
-      if (*AnalysisMode) {
-        cerr << move << ": " << score << endl;
-      }
       if (score > out.score || out.move_count == 0) {
         out.score = score;
         out.moves[0] = move;
@@ -217,14 +200,11 @@ class MiniMax {
     if (this->deadline_counter % (1<<14) != 0) {
       return;
     }
-    if (InterruptRequested()) {
+    if (interrupt_flag != nullptr && *interrupt_flag) {
       throw IntSignalException();
     }
-    if (interruptable) {
-      // TODO implement a different kind of interruption
-    //   if (LineReaderSingleton.HasData()) {
-    //     throw InputException();
-    //   }
+    if (InterruptRequested()) {
+      throw IntSignalException();
     }
     if (this->has_deadline) {
       auto now = steady_clock::now();
@@ -398,11 +378,11 @@ class MiniMax {
   int deadline_counter = 0;
   steady_clock::time_point deadline;
   bool has_deadline;
-  const bool interruptable;
   Field field;
   int player;
   int ply = 0;
   int depth = 0;
+  bool* interrupt_flag;
   // bool shortened = false;
 
   // const int depth_shortening;
@@ -420,9 +400,9 @@ std::ostream& operator<<(std::ostream& stream, const SearchResult& res) {
     if (i > 0) {
       stream << ", ";
     }
-    stream << res.moves[i];
+    stream << move_names[res.moves[i]];
   }
-  stream << "] Score: " << res.score << " Depth: " << res.depth << " Nodes: " << HumanReadable(res.nodes);
+  stream << "] Score: " << res.score << " Depth: " << res.depth << " Nodes: " << HumanReadable(res.nodes) << " Time: " << res.search_time_ms << "ms";
   return stream;
 }
 
@@ -436,7 +416,7 @@ int SearchResult::RandomMove() const {
 
 // Compute the best move for the given field and player.
 // This is the entry point for the AI search.
-SearchResult SearchMove(const Field &field, int player, SearchOptions opt) {
+SearchResult SearchMove(const Field &field, int player, SearchOptions opt, bool* interrupt_flag) {
   SearchResult out;
 
   // Lookup opening table, return a move from there if we find a hit.
@@ -462,7 +442,7 @@ SearchResult SearchMove(const Field &field, int player, SearchOptions opt) {
   //   }
   // }
 
-  MiniMax mm(field, player, field.ply, opt.time_limit_ms, opt.interruptable, opt.pondering);
+  MiniMax mm(field, player, field.ply, opt.time_limit_ms, opt.pondering, interrupt_flag);
   out.move_count = 0;
   auto start = steady_clock::now();
   
@@ -470,11 +450,11 @@ SearchResult SearchMove(const Field &field, int player, SearchOptions opt) {
   // constraints, ie, fixed depth can take a variable amount of depth. It is
   // also better to populate the cache with good moves, which improves
   // alpha-beta search.
-  for (int depth = 2; depth <= *MaxDepth; depth ++) {
+  for (int depth = 2; depth <= *MaxDepth; depth +=2) {
     SearchResult tmp;
     try {
-      mm.SetMaxDepth(depth);
-      tmp = mm.SearchMove();
+      tmp = mm.SearchMove(depth);
+      tmp.search_time_ms = duration_cast<milliseconds>(steady_clock::now() - start).count();
     } catch (TimeLimitExceededException e) {
       cerr << "Search interrupted after reaching time limit of " << opt.time_limit_ms << " milliseconds" << endl;
       out.time_limit_exceeded = true;
@@ -483,17 +463,26 @@ SearchResult SearchMove(const Field &field, int player, SearchOptions opt) {
       cerr << "Search manually interrupted" << endl;
       out.signal_interruption = true;
       break;
-    } catch (InputException e) {
-      cerr << "Search manually interrupted" << endl;
-      out.input_interruption = true;
-      break;
     }
     cerr << tmp;
-    if (*AnalysisMode) {
-      cerr << " Time: " << duration_cast<milliseconds>(steady_clock::now() - start).count();
-    }
     cerr << endl;
     out = tmp;
+  }
+
+  if (*AnalysisMode) {
+    try {
+      Field field_copy(field);
+      for (int i = 0; i < out.depth; i++) {
+        MiniMax mm(field_copy, player, field.ply, opt.time_limit_ms, false, nullptr);
+        auto tmp = mm.SearchMove(out.depth - i);
+        cerr << tmp << endl;
+        field_copy.MoveBot(player, tmp.RandomMove());
+        player ^= 1;
+        PrintField(field_copy);
+      }
+    } catch (TimeLimitExceededException e) {
+    } catch (IntSignalException e) {
+    }
   }
   return out;
 }

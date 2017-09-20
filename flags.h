@@ -11,4 +11,6 @@ extern const bool* AnalysisMode;
 
 extern const int *MaxDepth;
 
+extern const int *HashSize;
+
 #endif

@@ -3,8 +3,9 @@ BINARY=sawbot
 all: $(BINARY)
 
 CXXFLAGS=-Wall --std=c++1y -Werror -ggdb3 -D_LOCAL -march=native -O3
+LDLIBS=-lpthread
 
-OBJECTS = field.o utils.o random.o cmd_args.o flags.o minimax.o hash_table.o interruption.o
+OBJECTS = field.o utils.o random.o cmd_args.o flags.o minimax.o hash_table.o interruption.o minimax_worker.o
 MAIN_OBJECT = main.o
 
 

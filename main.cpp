@@ -7,17 +7,21 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <chrono>
 #include <map>
 
 #include "cmd_args.h"
 #include "field.h"
 #include "flags.h"
-#include "random.h"
-#include "heuristic.h"
-#include "minimax.h"
 #include "hash_table.h"
+#include "heuristic.h"
+#include "interruption.h"
+#include "minimax.h"
+#include "minimax_worker.h"
+#include "random.h"
 
 using namespace std;
+using namespace std::chrono;
 
 struct Settings {
   int timebank = 10000;
@@ -69,15 +73,20 @@ struct Settings {
 struct Game {
   int round = 0;
   string field_repr;
-  int snippets[2] = {0, 0};
-  bool has_weapon[2] = {false, false};
-  bool is_paralyzed[2] = {false, false};
 
   Settings settings;
 
   HeuristicWeights heuristic_weights;
 
-  Game() { }
+  Worker worker;
+
+  Game() {
+    worker.Init();
+  }
+
+  ~Game() {
+    worker.Close();
+  }
 
   bool handleUpdate(istream& stream) {
 		string player_name, type;
@@ -115,13 +124,6 @@ struct Game {
     return move;
   }
 
-  int computeBestMove(const Field& field, int time_limit_ms) {
-    SearchOptions opts;
-    opts.time_limit_ms = time_limit_ms;
-    auto result = SearchMove(field, settings.my_id, opts);
-    return result.RandomMove();
-  }
-
   bool handleAction(int time_remaining_ms) {
     auto field = ParseField(field_repr);
     if (!field) {
@@ -131,11 +133,22 @@ struct Game {
 
     int time_to_move_ms = time_remaining_ms / (MAX_ROUNDS - round + 1) + settings.time_per_move;
     int time_limit_ms = min(time_to_move_ms, time_remaining_ms - 25);
-    cerr << "Time remaining: " << time_remaining_ms << '\n';
-    cerr << "Time limit: " << time_limit_ms << '\n';
 
-    // int move = pickRandomMove(*field);
-    int move = computeBestMove(*field, time_limit_ms);
+    SearchOptions opts;
+    if (*AnalysisMode) {
+      opts.time_limit_ms = 10000000;
+    } else {
+      cerr << "Time remaining: " << time_remaining_ms << '\n';
+      cerr << "Time limit: " << time_limit_ms << '\n';
+      opts.time_limit_ms = time_limit_ms;
+    }
+    worker.Start(*field, settings.my_id, opts);
+    auto result = worker.Wait();
+    if (result.signal_interruption && !*AnalysisMode) {
+      return false;
+    }
+
+    int move = result.RandomMove();
 
     cout << move_names[move] << endl << flush;
     return true;
@@ -190,17 +203,23 @@ int main(int argc, const char** argv) {
   std::ios_base::sync_with_stdio(false);
   std::setvbuf(stdout, nullptr, _IOFBF, BUFSIZ);
 
+  auto seed = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+  cerr << "Seed: " << seed << endl;
+  RandSeed(seed);
+
   if (!ParseFlags(argc, argv)) {
     return 1;
   }
   InitHashConstants();
-  HashTableSingleton.Init(13900011);
+  HashTableSingleton.Init(*HashSize);
+  InitSignals();
   Game game;
   string line;
   fstream tee;
   if (!TeeInput->empty()) {
     tee.open(*TeeInput, iostream::out);
   }
+
   cerr << "Bot ready to process input" << endl;
   while (getline(cin, line)) {
     if (tee.good()) {
