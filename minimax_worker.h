@@ -2,6 +2,8 @@
 #define MINIMAX_WORKER_H
 
 #include <thread>
+#include <mutex>
+#include <condition_variable>
 
 #include "minimax.h"
 
