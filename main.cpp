@@ -78,14 +78,14 @@ struct Game {
 
   HeuristicWeights heuristic_weights;
 
-  Worker worker;
+  // Worker worker;
 
   Game() {
-    worker.Init();
+    // worker.Init();
   }
 
   ~Game() {
-    worker.Close();
+    // worker.Close();
   }
 
   bool handleUpdate(istream& stream) {
@@ -142,8 +142,10 @@ struct Game {
       cerr << "Time limit: " << time_limit_ms << '\n';
       opts.time_limit_ms = time_limit_ms;
     }
-    worker.Start(*field, settings.my_id, opts);
-    auto result = worker.Wait();
+    // worker.Start(*field, settings.my_id, opts);
+    // auto result = worker.Wait();
+    auto result = SearchMove(*field, settings.my_id, opts);
+
     if (result.signal_interruption && !*AnalysisMode) {
       return false;
     }

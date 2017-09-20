@@ -24,7 +24,9 @@ class Worker {
 
     void worker();
 
-    thread thread_;
+    static void static_worker(Worker* worker);
+
+    unique_ptr<thread> thread_;
 
     bool running_ = false;
 

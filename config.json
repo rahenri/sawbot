@@ -22,6 +22,9 @@
       "name": "v6",
       "cmd": "./sawbot-v6"
     }, {
+      "name": "v7",
+      "cmd": "./sawbot-v7"
+    }, {
       "name": "candidate",
       "cmd": "./sawbot-candidate"
     }, {
@@ -31,7 +34,7 @@
   ],
   "train_bot": "train-bot",
   "pairs": [
-    ["v6", "candidate"]
+    ["v7", "candidate"]
   ],
   "trainable_weights": [
     {

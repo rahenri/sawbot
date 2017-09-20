@@ -3,7 +3,13 @@
 #include "minimax_worker.h"
 
 void Worker::Init() {
-  thread_ = thread(&Worker::worker, this);
+  cerr << "Starting worker thread..." << endl;
+  thread_ = unique_ptr<thread>(new thread(&Worker::static_worker, this));
+}
+
+void Worker::static_worker(Worker* worker) {
+  cerr << "Worker thread started" << endl;
+  worker->worker();
 }
 
 void Worker::worker() {
@@ -49,7 +55,7 @@ void Worker::Close() {
   lk.unlock();
   worker_condition_.notify_all();
 
-  thread_.join();
+  thread_->join();
 }
 
 void Worker::Interrupt() {

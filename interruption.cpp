@@ -9,12 +9,12 @@ using namespace std;
 
 volatile sig_atomic_t interruption_requested = 0;
 
-static void HandleInterrupt(int sig) {
+void HandleInterrupt(int sig) {
   interruption_requested++;
 }
 
-static void HandleSigsev(int sig) {
-  cerr << "Crashed!" << endl;
+void HandleSigsev(int sig) {
+  cerr << "Seg fault!\n";
   exit(1);
 }
 
