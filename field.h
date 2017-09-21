@@ -171,14 +171,22 @@ struct Field {
         }
       }
     }
-    int score = 0;
+    double score = 0;
     for (int i = 0; i < FIELD_SIZE; i++) {
+      if (walls[i]) continue;
+      int neighbors = 0;
+      for (int d = 0; d < 4; d++) {
+        int i2 = i + dd[d];
+        if (!walls[i2]) {
+          neighbors++;
+        }
+      }
       int d1 = dists[player][i];
       int d2 = dists[player^1][i];
       if (d1 < d2) {
-        score ++;
+        score += neighbors;
       } else if (d2 < d1) {
-        score --;
+        score -= neighbors;
       }
     }
     return score;
