@@ -13,4 +13,8 @@ extern const int *MaxDepth;
 
 extern const int *HashSize;
 
+extern const int *DepthShortening;
+
+extern const int *ShorteningThreshold;
+
 #endif

@@ -83,9 +83,9 @@ class MiniMax {
     : field(field),
       player(player),
       ply(ply),
-      interrupt_flag(interrupt_flag)
-      // depth_shortening(*DepthShortening),
-      // shortening_threshold(*ShorteningThreshold),
+      interrupt_flag(interrupt_flag),
+      depth_shortening(*DepthShortening),
+      shortening_threshold(*ShorteningThreshold)
       // pondering(ponder)
       {
 
@@ -249,28 +249,28 @@ class MiniMax {
       //   printer->Attr("field", field.BoardRepr());
       //   printer->Attr("macro", field.MacroBoardRepr());
       // }
-      // bool full_search = true;
-      // if (depth_shortening > 0 && !shortened && depth >= depth_shortening && !pondering) {
-      //   shortened = true;
-      //   depth -= depth_shortening;
-      //   score = -this->DeepEval(-(beta+shortening_threshold), -(alpha-shortening_threshold));
-      //   depth += depth_shortening;
-      //   shortened = false;
-      //   if  (score < alpha - shortening_threshold || score > beta + shortening_threshold) {
-      //     full_search = false;
-      //   }
-      // }
-      // if (full_search) {
-      // if (pondering) {
-      //   pondering = false;
-      //   // Perform a complete search if pondering.
-      //   auto result = SearchMove();
-      //   score = -result.score;
-      //   pondering = true;
-      // } else {
-        score = -this->DeepEval(-beta, -alpha);
-      //}
-      // }
+      bool full_search = true;
+      if (depth_shortening > 0 && !shortened && depth >= depth_shortening /*&& !pondering*/) {
+        shortened = true;
+        depth -= depth_shortening;
+        score = -this->DeepEval(-(beta+shortening_threshold+1), -(alpha-shortening_threshold-1));
+        depth += depth_shortening;
+        shortened = false;
+        if (score < alpha - shortening_threshold || score > beta + shortening_threshold) {
+          full_search = false;
+        }
+      }
+      if (full_search) {
+        // if (pondering) {
+        //   pondering = false;
+        //   // Perform a complete search if pondering.
+        //   auto result = SearchMove();
+        //   score = -result.score;
+        //   pondering = true;
+        // } else {
+          score = -this->DeepEval(-beta, -alpha);
+        //}
+      }
       // if (PrintSearchTree) {
       //   printer->Attr("score", score);
       //   printer->Pop();
@@ -383,10 +383,10 @@ class MiniMax {
   int ply = 0;
   int depth = 0;
   bool* interrupt_flag;
-  // bool shortened = false;
+  bool shortened = false;
 
-  // const int depth_shortening;
-  // const int shortening_threshold;
+  const int depth_shortening;
+  const int shortening_threshold;
 
   // bool pondering;
 
