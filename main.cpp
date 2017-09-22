@@ -132,7 +132,7 @@ struct Game {
     PrintField(*field);
 
     int time_to_move_ms = time_remaining_ms / (MAX_ROUNDS - round + 1) + settings.time_per_move;
-    int time_limit_ms = min(time_to_move_ms, time_remaining_ms - 25);
+    int time_limit_ms = max(1, min(time_to_move_ms, time_remaining_ms - 25));
 
     SearchOptions opts;
     if (*AnalysisMode) {

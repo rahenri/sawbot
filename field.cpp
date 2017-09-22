@@ -10,11 +10,21 @@ uint64_t field_hash[FIELD_SIZE];
 uint64_t base_hash;
 
 void PrintField(const Field& field) {
+  field.Eval(0);
   char field_str[HEIGHT][WIDTH+2];
   for (int y = 0; y < HEIGHT; y++) {
     for (int x = 0; x < WIDTH; x++) {
       int pos = (x) + (y)*WIDTH;
       char c = '.';
+      int d1 = field.dists[0][pos];
+      int d2 = field.dists[1][pos];
+      if (d1 < d2) {
+        c = '+';
+      } else if (d2 < d1) {
+        c = '-';
+      } else {
+        c = '.';
+      }
       if ((y == 0 or y == HEIGHT-1) and (x == 0 or x == WIDTH-1)) {
         c = '+';
       } else if (y == 0 or y == HEIGHT-1) {

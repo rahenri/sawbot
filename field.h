@@ -154,10 +154,10 @@ struct Field {
 
   int Eval(int player) const {
     for (int p = 0; p < 2; p++) {
+      if (died[p]) continue;
       int end = 0;
       int start = 0;
       for (int i = 0; i < FIELD_SIZE; i++) dists[p][i]=0xffff;
-      if (died[p]) continue;
       queue[end++] = bots[p];
       dists[p][bots[p]] = 0;
       while (end > start) {
@@ -171,7 +171,7 @@ struct Field {
         }
       }
     }
-    double score = 0;
+    int score = 0;
     for (int i = 0; i < FIELD_SIZE; i++) {
       if (walls[i]) continue;
       int neighbors = 0;

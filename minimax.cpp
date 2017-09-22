@@ -49,26 +49,15 @@ struct MoveSorter {
 //   sort(moves, moves+count, MoveSorter());
 // }
 
-inline void SortMoves(int* moves, int count, int first_move) {
-  if (first_move == -1 || count <= 1) {
-    return;
-  }
+struct MoveScore {
+  int dir;
+  int score;
 
-  int first_move_idx = -1;
-  for (int i = 0; i < count; i++) {
-    if (moves[i] == first_move) {
-      first_move_idx = i;
-      break;
-    }
+  inline bool operator<(const MoveScore& other) const {
+    return score < other.score;
   }
-  if (first_move_idx == -1) {
-    return;
-  }
-  for (int i = first_move_idx - 1; i >= 0; i--) {
-    moves[i+1] = moves[i];
-  }
-  moves[0] = first_move;
-}
+};
+
 
 // The MiniMax class contains all state being used when search the tree of moves.
 class MiniMax {
@@ -374,6 +363,64 @@ class MiniMax {
     return best_score;
   }
 
+
+  inline void SortRegularMoves(int* moves, int count) {
+    if (count <= 1) {
+      return;
+    }
+    // cerr << "Before:" << endl;
+    // for (int i = 0; i < count; i++) {
+    //   cerr << moves[i] << " ";
+    // }
+    // cerr << endl;
+    MoveScore scores[4];
+    int pos = field.bots[player];
+    for (int i = 0; i < count; i++) {
+      int score = 0;
+      int next = pos + moves[i];
+      for (int dir = 0; dir < 4; dir++) {
+        int n = next + dd[dir];
+        if (!field.walls[n]) {
+          score++;
+        }
+      }
+      scores[i].score = score;
+      scores[i].dir = moves[i];
+    }
+    stable_sort(scores, scores+count);
+    for (int i = 0; i < count; i++) {
+      moves[i] = scores[i].dir;
+    }
+    // cerr << "After:" << endl;
+    // for (int i = 0; i < count; i++) {
+    //   cerr << moves[i] << " ";
+    // }
+    // cerr << endl;
+  }
+
+  inline void SortMoves(int* moves, int count, int first_move) {
+    if (first_move == -1 || count <= 1) {
+      // SortRegularMoves(moves, count);
+      return;
+    }
+
+    int first_move_idx = -1;
+    for (int i = 0; i < count; i++) {
+      if (moves[i] == first_move) {
+        first_move_idx = i;
+        break;
+      }
+    }
+    if (first_move_idx == -1) {
+      return;
+    }
+    for (int i = first_move_idx - 1; i >= 0; i--) {
+      moves[i+1] = moves[i];
+    }
+    moves[0] = first_move;
+    // SortRegularMoves(moves+1, count-1);
+  }
+
   int64_t nodes = 0;
   int deadline_counter = 0;
   steady_clock::time_point deadline;
@@ -414,6 +461,32 @@ int SearchResult::RandomMove() const {
   }
 }
 
+bool checkOpeningHeuristic(const Field& field, int player) {
+  int y1 = field.bots[player] / WIDTH;
+  int x1 = field.bots[player] % WIDTH;
+  int count[2] = {0, 0};
+  int side = (x1 - 1)/8;
+  if (side != player) {
+    return false;
+  }
+  if (x1 == 8 || x1 == 9) {
+    return false;
+  }
+  for (int y = 1; y < 17; y++) {
+    if (y == y1) continue;
+    for (int x = 1; x < 17; x++) {
+      if (field.walls[x+y*WIDTH]) {
+        int p = (x - 1) / 8;
+        count[p]++;
+      }
+    }
+  }
+  if (count[player] > 0) {
+    return false;
+  }
+  return true;
+}
+
 // Compute the best move for the given field and player.
 // This is the entry point for the AI search.
 SearchResult SearchMove(const Field &field, int player, SearchOptions opt, bool* interrupt_flag) {
@@ -441,6 +514,19 @@ SearchResult SearchMove(const Field &field, int player, SearchOptions opt, bool*
   //     }
   //   }
   // }
+
+  if (checkOpeningHeuristic(field, player) && !*AnalysisMode) {
+    if (player == 0) {
+      out.moves[0] = RIGHT;
+    } else {
+      out.moves[0] = LEFT;
+    }
+    out.nodes = 0;
+    out.depth = 0;
+    out.score = 0;
+    out.move_count = 1;
+    return out;
+  }
 
   MiniMax mm(field, player, field.ply, opt.time_limit_ms, opt.pondering, interrupt_flag);
   out.move_count = 0;

@@ -8,4 +8,4 @@ FILES=$(find .  | grep '\.\(h\|cpp\)$' | grep -v '_test\.cpp$')
 
 zip ${OUTPUT} ${FILES}
 
-echo "Created ${FILES}"
+echo "Created ${OUTPUT}"
