@@ -21,11 +21,22 @@ static const int DOWN = 1;
 static const int LEFT = 2;
 static const int UP = 3;
 
-const int dd[4] = {
+const int dd[] = {
     1,       // right
     WIDTH,   // down
     -1,      // left
     -HEIGHT, // up
+};
+
+const int dd8[] = {
+    1,         // right      7
+    1+WIDTH,   // right down 6
+    WIDTH,     // down       5
+    WIDTH-1,   // down left  4
+    -1,        // left       3
+    -1-HEIGHT, // left up    2
+    -HEIGHT,   // up         1
+    -HEIGHT+1, // up right   0
 };
 
 struct Field {
@@ -42,7 +53,7 @@ struct Field {
   bool died[2] = {false};
 
   mutable uint16_t dists[2][FIELD_SIZE];
-  mutable int16_t queue[FIELD_SIZE];
+  mutable int16_t queue[FIELD_SIZE*10];
 
   Field() {
     // Put wall fence
@@ -152,6 +163,19 @@ struct Field {
     return n;
   }
 
+  inline bool isTunnel(int pos) const {
+    uint32_t mask = 0;
+    for (int d = 0; d < 4; d++) {
+      int npos = pos + dd[d];
+      mask <<= 1;
+      if (!walls[npos]) {
+        mask |= 1;
+      }
+    }
+    return (mask == ((1<<0) | (1<<2))) or (mask == ((1<<1) | (1<<3)));
+    return false;
+  }
+
   int Eval(int player) const {
     for (int p = 0; p < 2; p++) {
       if (died[p]) continue;
@@ -162,10 +186,12 @@ struct Field {
       dists[p][bots[p]] = 0;
       while (end > start) {
         int pos = queue[start++];
-        auto dist = dists[p][pos]+1;
+        uint16_t dist = dists[p][pos]+1;
+        if (pos != bots[p] && isTunnel(pos)) dist += 2;
         for (int i = 0; i < 4; i++) {
           int npos = pos + dd[i];
-          if (walls[npos] or dists[p][npos]!=0xffff) continue;
+          if (walls[npos] or dists[p][npos]<=dist) continue;
+          // cerr << dists[p][npos] << " " << dist << endl;
           dists[p][npos] = dist;
           queue[end++] = npos;
         }

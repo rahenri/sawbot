@@ -16,15 +16,6 @@ void PrintField(const Field& field) {
     for (int x = 0; x < WIDTH; x++) {
       int pos = (x) + (y)*WIDTH;
       char c = '.';
-      int d1 = field.dists[0][pos];
-      int d2 = field.dists[1][pos];
-      if (d1 < d2) {
-        c = '+';
-      } else if (d2 < d1) {
-        c = '-';
-      } else {
-        c = '.';
-      }
       if ((y == 0 or y == HEIGHT-1) and (x == 0 or x == WIDTH-1)) {
         c = '+';
       } else if (y == 0 or y == HEIGHT-1) {
@@ -34,6 +25,18 @@ void PrintField(const Field& field) {
       } else {
         if (field.walls[pos]) {
           c = '#';
+        } else {
+          int d1 = field.dists[0][pos];
+          int d2 = field.dists[1][pos];
+          if (field.isTunnel(pos)) {
+            c = ',';
+          } else if (d1 < d2) {
+            c = '+';
+          } else if (d2 < d1) {
+            c = '-';
+          } else {
+            c = '.';
+          }
         }
       }
       field_str[y][x] = c;
