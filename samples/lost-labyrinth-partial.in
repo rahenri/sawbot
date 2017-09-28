@@ -1,0 +1,196 @@
+settings player_names player0,player1
+settings your_bot player0
+settings timebank 10000
+settings time_per_move 200
+settings your_botid 0
+settings field_width 16
+settings field_height 16
+update game round 61
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,.,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,.,x,.,.,x,x,x,x,x,x,x,.,.,.,1,x,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,x,x,.,.,x,x,x,x,x,x,x,x,x,x,.,.,x,x,.,.,0,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 4506
+update game round 62
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,.,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,.,x,.,.,x,x,x,x,x,x,x,.,.,1,x,x,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,x,x,.,.,x,x,x,x,x,x,x,x,x,x,.,.,x,x,.,0,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 4456
+update game round 63
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,.,x,.,.,x,x,x,x,x,x,x,.,.,1,.,.,.,x,.,.,x,x,x,x,x,x,x,.,.,x,x,x,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,x,x,.,.,x,x,x,x,x,x,x,x,x,x,.,.,x,x,0,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 4395
+update game round 64
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,.,x,.,.,x,x,x,x,x,x,x,.,.,x,1,.,.,x,.,.,x,x,x,x,x,x,x,.,.,x,x,x,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,x,x,0,.,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 4345
+update game round 65
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,.,x,.,.,x,x,x,x,x,x,x,.,.,x,x,1,.,x,.,.,x,x,x,x,x,x,x,.,.,x,x,x,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,0,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 4290
+update game round 66
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,.,x,.,.,x,x,x,x,x,x,x,.,.,x,x,x,1,x,.,.,x,x,x,x,x,x,x,.,.,x,x,x,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,x,x,.,0,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 4233
+update game round 67
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,1,x,.,.,x,x,x,x,x,x,x,.,.,x,x,x,x,x,.,.,x,x,x,x,x,x,x,.,.,x,x,x,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,x,x,0,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 4179
+update game round 68
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,1,x,x,.,.,x,x,x,x,x,x,x,.,.,x,x,x,x,x,.,.,x,x,x,x,x,x,x,.,.,x,x,x,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,x,x,0,.,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 4127
+update game round 69
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,x,x,x,x,x,x,x,.,.,.,1,x,x,x,.,.,x,x,x,x,x,x,x,.,.,x,x,x,x,x,.,.,x,x,x,x,x,x,x,.,.,x,x,x,x,x,.,.,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,0,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 4083
+update game round 70
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,1,x,x,x,.,.,x,x,x,x,x,x,x,.,.,.,x,x,x,x,.,.,x,x,x,x,x,x,x,.,.,x,x,x,x,x,.,.,x,x,x,x,x,x,x,.,.,x,x,x,x,x,.,0,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 4030
+update game round 71
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,1,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,x,x,x,x,x,x,x,.,.,.,x,x,x,x,.,.,x,x,x,x,x,x,x,.,.,x,x,x,x,x,.,.,x,x,x,x,x,x,x,.,.,x,x,x,x,x,0,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3967
+update game round 72
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,1,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,x,x,x,x,x,x,x,.,.,.,x,x,x,x,.,.,x,x,x,x,x,x,x,.,.,x,x,x,x,x,0,.,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3917
+update game round 73
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,1,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,x,x,x,x,x,x,x,.,.,.,x,x,x,x,.,.,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,0,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3868
+update game round 74
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,1,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,x,x,x,x,x,x,x,.,.,.,x,x,x,x,.,0,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3815
+update game round 75
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,.,.,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,1,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,x,x,x,x,x,x,x,.,.,.,x,x,x,x,0,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3765
+update game round 76
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,.,1,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,0,.,x,x,x,x,x,x,x,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3721
+update game round 77
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,1,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,x,0,x,x,x,x,x,x,x,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3676
+update game round 78
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,1,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,0,.,.,.,.,x,x,x,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3626
+update game round 79
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,1,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,0,x,.,.,.,.,x,x,x,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3583
+update game round 80
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,1,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,0,.,.,.,.,.,x,x,x,.,.,.,x,x,x,x,x,x,.,.,.,.,x,x,x,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3535
+update game round 81
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,1,x,x,x,x,x,0,.,.,.,.,x,x,x,.,.,.,x,x,x,x,x,x,.,.,.,.,x,x,x,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3489
+update game round 82
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,x,x,0,.,.,.,x,x,x,.,.,1,x,x,x,x,x,x,.,.,.,.,x,x,x,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3438
+update game round 83
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,x,x,x,.,.,.,x,x,x,.,.,x,x,x,x,x,x,x,0,.,.,.,x,x,x,.,.,1,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3389
+update game round 84
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,x,x,x,.,.,.,x,x,x,.,.,x,x,x,x,x,x,x,x,0,.,.,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,1,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3343
+update game round 85
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,x,x,x,.,.,.,x,x,x,.,.,x,x,x,x,x,x,x,x,x,0,.,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,1,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3293
+update game round 86
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,x,x,x,.,.,.,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,0,x,x,x,.,1,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3242
+update game round 87
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,x,x,x,.,.,0,x,x,x,.,1,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3197
+update game round 88
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,1,x,x,x,x,x,x,x,x,.,0,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3148
+update game round 89
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,1,x,x,x,x,x,.,.,.,.,0,.,x,x,x,.,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3104
+update game round 90
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,1,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,x,x,x,x,x,x,.,.,.,.,x,0,x,x,x,.,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3061
+update game round 91
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,1,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,x,x,x,x,x,x,.,.,.,.,.,0,x,x,x,.,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3018
+update game round 92
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,.,1,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,x,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,x,x,x,x,x,x,.,.,.,.,0,x,x,x,x,.,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 2971
+update game round 93
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,1,x,x,x,x,x,x,.,.,.,.,.,.,x,x,x,.,x,x,x,x,x,x,.,.,.,.,0,.,x,x,x,.,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,.,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 2928
+update game round 94
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,.,x,x,x,1,x,x,x,x,x,x,.,.,.,.,x,0,x,x,x,.,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,.,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 2882
+update game round 95
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,0,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,1,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,.,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 2836
+update game round 96
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,0,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,1,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 2794
+update game round 97
+update game field .,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,0,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,1,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 2747
+update game round 98
+update game field .,.,.,.,0,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,1,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 2701
+update game round 99
+update game field .,.,.,0,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,1,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 2659
+update game round 100
+update game field .,.,0,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,1,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 2616
+update game round 101
+update game field .,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,0,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,1,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 2574
+update game round 102
+update game field .,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,0,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,1,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 2531
+update game round 103
+update game field .,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,0,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,1,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 2521
+update game round 104
+update game field .,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,0,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,1,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 2478
+update game round 105
+update game field .,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,0,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,1,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 2544
+update game round 106
+update game field .,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,0,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,1,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 2651
+update game round 107
+update game field .,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,0,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,1,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 2809
+update game round 108
+update game field .,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,0,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,1,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 2984
+update game round 109
+update game field .,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,0,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,1,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3167
+update game round 110
+update game field .,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,0,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,1,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3354
+update game round 111
+update game field .,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,0,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,1,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3548
+update game round 112
+update game field .,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,0,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,1,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3742
+update game round 113
+update game field .,0,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,1,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 3940
+update game round 114
+update game field 0,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,1,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 4138
+update game round 115
+update game field x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,0,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,1,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 4336
+update game round 116
+update game field x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,0,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,1,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 4534
+update game round 117
+update game field x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,0,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,1,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 4732
+update game round 118
+update game field x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,0,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,1,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 4930
+update game round 119
+update game field x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,0,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,1,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 5128
+update game round 120
+update game field x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,0,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,1,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x
+action move 5328
+update game round 121
+update game field x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,0,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,1,x,x
+action move 5526
+update game round 122
+update game field x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,0,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,.,.,.,.,.,.,.,.,1,x,x,x
+action move 5724
+update game round 123
+update game field x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,0,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,x,x,x,x,x,x,x,.,.,.,.,.,.,.,1,x,x,x,x
+action move 5922

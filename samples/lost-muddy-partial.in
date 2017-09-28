@@ -1,0 +1,10 @@
+settings player_names player0,player1
+settings your_bot player1
+settings timebank 10000
+settings time_per_move 200
+settings your_botid 1
+settings field_width 16
+settings field_height 16
+update game round 75
+update game field .,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,x,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,x,x,x,x,x,x,.,.,x,x,.,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,.,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,.,.,.,.,x,x,x,x,x,x,.,.,x,x,x,x,.,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,x,x,x,x,.,x,x,x,x,x,x,x,x,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,.,x,x,x,x,x,x,.,x,x,x,x,x,x,.,.,.,x,.,x,x,x,x,x,x,.,x,x,x,x,.,.,1,x,.,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,x,x,x,x,x,x,x,x,x,.,.,x,x,x,x,x,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,0,.,.,.,.,.,.,.,.,.,.
+action move 3671
