@@ -555,20 +555,20 @@ SearchResult SearchMove(const Field &field, int player, SearchOptions opt, bool*
     out = tmp;
   }
 
-  if (*AnalysisMode) {
-    try {
-      Field field_copy(field);
-      for (int i = 0; i < out.depth; i++) {
-        MiniMax mm(field_copy, player, field.ply, opt.time_limit_ms, false, nullptr);
-        auto tmp = mm.SearchMove(out.depth - i);
-        cerr << tmp << endl;
-        field_copy.MoveBot(player, tmp.RandomMove());
-        player ^= 1;
-        PrintField(field_copy);
-      }
-    } catch (TimeLimitExceededException e) {
-    } catch (IntSignalException e) {
-    }
-  }
+  // if (*AnalysisMode) {
+  //   try {
+  //     Field field_copy(field);
+  //     for (int i = 0; i < out.depth; i++) {
+  //       MiniMax mm(field_copy, player, field.ply, opt.time_limit_ms, false, nullptr);
+  //       auto tmp = mm.SearchMove(out.depth - i);
+  //       cerr << tmp << endl;
+  //       field_copy.MoveBot(player, tmp.RandomMove());
+  //       player ^= 1;
+  //       PrintField(field_copy);
+  //     }
+  //   } catch (TimeLimitExceededException e) {
+  //   } catch (IntSignalException e) {
+  //   }
+  // }
   return out;
 }
