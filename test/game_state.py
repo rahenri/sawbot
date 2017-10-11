@@ -24,7 +24,6 @@ def Collided(prev1, after1, prev2, after2):
 def RandomBot():
     return (random.randint(1, 6), random.randint(1, 14))
 
-
 class GameState:
 
   def __init__(self, names = (1,2)):
@@ -58,9 +57,10 @@ class GameState:
 
   def UpdateFromJSon(self, mutable_data):
     data = mutable_data
-    self.bots = data['bots']
+    self.bots = list(data['bots'])
     self.round = data['round']
-    self.dead = data['dead']
+    self.dead = list(data['dead'])
+    self.walls = list(list(row) for row in data['walls'])
 
   def _RandomCell(self, wall=0):
     while True:
@@ -75,14 +75,15 @@ class GameState:
 
   def StaticJSon(self):
     return {
-        'names': self.names,
+        'names': list(self.names),
     }
 
   def JSon(self):
     return {
-        'bots': self.bots,
+        'bots': list(self.bots),
         'round': self.round,
-        'dead': self.dead,
+        'dead': list(self.dead),
+        'walls': list(list(row) for row in self.walls),
     }
 
   def JSonFull(self):

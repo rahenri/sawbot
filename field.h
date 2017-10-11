@@ -188,6 +188,7 @@ struct Field {
         int pos = queue[start++];
         uint16_t dist = dists[p][pos]+1;
         if (pos != bots[p] && isTunnel(pos)) dist += 2;
+        // if (pos != bots[p] && isTunnel(pos)) dist += 100;
         for (int i = 0; i < 4; i++) {
           int npos = pos + dd[i];
           if (walls[npos] or dists[p][npos]<=dist) continue;
@@ -217,6 +218,8 @@ struct Field {
     }
     return score;
   }
+
+  string gen_features() const;
 
   uint64_t ComputeHash() const;
 };

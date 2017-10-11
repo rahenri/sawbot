@@ -156,6 +156,15 @@ struct Game {
     return true;
   }
 
+  bool handleFeatures() {
+    auto field = ParseField(field_repr);
+    if (!field) {
+      return false;
+    }
+    cout << field->gen_features() << endl << flush;
+    return true;
+  }
+
   bool processNextCommand(const string& line) {
     stringstream stream(line);
     string command;
@@ -193,7 +202,8 @@ struct Game {
       weights.from_map(values);
       heuristic_weights = weights;
       return true;
-
+    } else if(command == "features") {
+      return handleFeatures();
     } else {
       return false;
     }

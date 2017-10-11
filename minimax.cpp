@@ -296,7 +296,7 @@ class MiniMax {
         //   printer->Attr("hash_lower_bound", memo->lower_bound);
         //   printer->Attr("hash_upper_bound", memo->upper_bound);
         // }
-        if (memo->depth == depth) {
+        if (memo->depth >= depth) {
           if (memo->lower_bound == memo->upper_bound) {
             return memo->lower_bound;
           }
@@ -306,6 +306,12 @@ class MiniMax {
           if (memo->upper_bound < alpha) {
             return memo->upper_bound;
           }
+        }
+        if (memo->lower_bound >= MAX_SCORE - 1000) {
+          return memo->lower_bound;
+        }
+        if (memo->upper_bound <= -MAX_SCORE + 1000) {
+          return memo->upper_bound;
         }
         first_move = memo->move;
       }

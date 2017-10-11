@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <cassert>
 #include <random>
+#include <sstream>
 
 #include "field.h"
 #include "random.h"
@@ -116,4 +117,14 @@ uint64_t Field::ComputeHash() const {
   }
 
   return output;
+}
+
+string Field::gen_features() const {
+  stringstream stream;
+  auto score = Eval(0);
+  stream << "{";
+  stream << "\"ply\":" << ply;
+  stream << ",\"score\":" << score;
+  stream << "}";
+  return stream.str();
 }

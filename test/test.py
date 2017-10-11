@@ -16,8 +16,7 @@ import traceback
 import game_state
 import utils
 import serialize
-
-from subprocess import Popen, PIPE, STDOUT
+import bot_wrapper
 
 from datetime import datetime
 
@@ -54,98 +53,6 @@ class Estimator:
 
   def __len__(self):
     return len(self.elements)
-
-class BotInfo:
-  def __init__(self, cmd, identity, log_dir, display_name = None, weights = None):
-    self.cmd = cmd
-    self.identity = identity
-    self.display_name = display_name or cmd
-    self.log_dir = log_dir
-    self.weights = weights
-
-  def Run(self, round_id, side):
-    extra_commands = []
-    if self.weights:
-      values = ' '.join('{} {}'.format(k, v) for k, v in self.weights)
-      extra_commands.append('weights {}'.format(values))
-    log_path = '/dev/null'
-    if self.log_dir:
-      log_path = '{}/bot.stderr.{}.{}.{}'.format(self.log_dir, self.identity, round_id + 1, side)
-    with open(log_path, 'w') as stderr:
-      proc = Popen(self.cmd, shell=True, stdout=PIPE, stdin=PIPE, stderr=stderr, universal_newlines=True, bufsize=1)
-      return BotProc(self.identity, self.display_name, proc, extra_commands)
-
-
-  def __cmp__(self, other):
-    return cmp(self.identity, other.identity)
-
-  def __repr__(self):
-    return self.display_name
-
-
-class BotProc:
-  def __init__(self, identity, cmd, proc, extra_commands = None):
-    self.identity = identity
-    self.cmd = cmd
-    self._proc = proc
-    self._timebank = 10000
-    self._extra_commands = extra_commands
-
-  def InitTimer(self, timebank, time_per_move):
-    self.timebank = timebank
-    self.time_per_move = time_per_move
-
-  def SendSettings(self, bot_id):
-    settings = (
-        'settings timebank {timebank}\n'
-        'settings time_per_move {time_per_move}\n'
-        'settings player_names player0,player1\n'
-        'settings your_bot player{bot_id}\n'
-        'settings your_botid {bot_id}\n'
-        'settings field_width {field_width}\n'
-        'settings field_height {field_height}\n').format(
-            bot_id=bot_id,
-            timebank=self.timebank,
-            time_per_move=self.time_per_move,
-            field_width=game_state.FIELD_WIDTH,
-            field_height=game_state.FIELD_HEIGHT)
-
-    self._proc.stdin.write(settings)
-
-    if self._extra_commands:
-      for cmd in self._extra_commands: self._proc.stdin.write(cmd + '\n')
-
-
-  def SendUpdate(self, round_num, field):
-    start = time.time()
-    updates = (
-        'update game round {round}\n'
-        'update game field {field}\n'
-        'action move {timebank}\n').format(
-            round=round_num,
-            field=field,
-            timebank=int(self.timebank))
-
-    self._proc.stdin.write(updates)
-
-    while True:
-      line = self._proc.stdout.readline()
-      if not line:
-        print('Bot crashed')
-        line = 'die'
-        break
-      line = line.strip()
-      if line:
-        break
-
-    end = time.time()
-    self.timebank += self.time_per_move - (end - start) * 1000.0
-
-    return line
-
-  def close(self):
-    self._proc.stdin.close()
-    self._proc.wait()
 
 def RatingDelta(wins, draws, losses):
   total = wins+losses+draws
@@ -234,7 +141,7 @@ def ParseBots(args, config):
     bots = []
     identity = 1
     for cmd in args.bots:
-      bots.append(BotInfo(cmd, identity, args.logdir))
+      bots.append(bot_wrapper.BotInfo(cmd, identity, args.logdir))
       identity += 1
 
     games = []
@@ -256,7 +163,7 @@ def ParseBots(args, config):
     for bot in config['bots']:
       cmd = bot['cmd']
       name = bot['name']
-      info = BotInfo(cmd, identity, args.logdir, name)
+      info = bot_wrapper.BotInfo(cmd, identity, args.logdir, name)
       if name in bots:
         raise(ValueError('Duplicated bot name: {}'.format(name)))
       bots[name] = info
@@ -326,7 +233,7 @@ def main(args):
   pool = multiprocessing.Pool(processes=args.workers) 
   # pool = FakePool()
 
-  hist_file = datetime.now().strftime('games-%Y%m%d-%H%M%S.txt')
+  hist_file = datetime.now().strftime('games-%Y%m%d-%H%M%S.json')
   hist_path = os.path.join(args.history, hist_file)
 
   if args.action == 'eval':
@@ -361,8 +268,8 @@ def main(args):
     train_bot_cmd = train_bot_config['cmd']
     for i in range(args.count):
       w = [(w.name,w.RandomValue()) for w in weights]
-      base = BotInfo(train_bot_cmd, 1, args.logdir, 'base')
-      test = BotInfo(train_bot_cmd, 2, args.logdir, 'test', weights=w)
+      base = bot_wrapper.BotInfo(train_bot_cmd, 1, args.logdir, 'base')
+      test = bot_wrapper.BotInfo(train_bot_cmd, 2, args.logdir, 'test', weights=w)
 
       if i % 2 == 0:
         game = [base, test, i]
@@ -469,7 +376,7 @@ if __name__ == '__main__':
   workers = multiprocessing.cpu_count() // 2
   parser = argparse.ArgumentParser(description='Run two bots againts each other.')
   parser.add_argument('bots', nargs='*', help='The bots to be tested')
-  parser.add_argument('--action', default='eval', help='Action to take, either eval or train')
+  parser.add_argument('--action', choices=['eval', 'train'], default='eval', help='Action to take, either eval or train')
   parser.add_argument('--count', type=int, default=1000, help='Number of times to run the bots (Default: 1)')
   parser.add_argument('--time-per-move', type=int, default=50, help='Milliseconds added to time bank each turn (Default: 100)')
   parser.add_argument('--timebank', type=int, default=1000, help='Milliseconds initial time in the time bank (Default: 10000)')
