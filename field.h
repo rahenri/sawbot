@@ -4,9 +4,10 @@
 #include <iostream>
 #include <memory>
 
-#include "utils.h"
-#include "random.h"
 #include "constants.h"
+#include "nn.h"
+#include "random.h"
+#include "utils.h"
 
 using namespace std;
 
@@ -20,6 +21,9 @@ static const int RIGHT = 0;
 static const int DOWN = 1;
 static const int LEFT = 2;
 static const int UP = 3;
+
+static const int FIRST_PLAYER = 0;
+static const int SECOND_PLAYER = 1;
 
 const int dd[] = {
     1,       // right
@@ -67,31 +71,6 @@ struct Field {
     }
   }
 
-  // inline void MoveBots(const int dir[2]) {
-
-  //   hash ^= bot_hash[0][bots[0]];
-  //   hash ^= bot_hash[1][bots[1]];
-
-  //   bots[0] += dir[0];
-  //   bots[1] += dir[1];
-
-  //   if (walls[bots[0]]) {
-  //     died[0] = true;
-  //   }
-  //   if (walls[bots[1]]) {
-  //     died[1] = true;
-  //   }
-
-  //   walls[bots[0]]++;
-  //   walls[bots[1]]++;
-
-  //   hash ^= bot_hash[0][bots[0]];
-  //   hash ^= bot_hash[1][bots[1]];
-
-  //   hash ^= field_hash[bots[0]];
-  //   hash ^= field_hash[bots[1]];
-  // }
-
   inline void MoveBot(int player, int dir) {
 
     hash ^= bot_hash[player][bots[player]];
@@ -127,19 +106,19 @@ struct Field {
   }
 
   inline bool Over() const {
-    return died[0] or died[1];
+    return died[FIRST_PLAYER] or died[SECOND_PLAYER];
   }
 
   // Returns the player ID who won, returns -1 if drawn.
   inline int Winner() const {
-    if (bots[0] == bots[1]) {
+    if (bots[FIRST_PLAYER] == bots[SECOND_PLAYER]) {
       return -1;
     }
-    if (!died[0]) {
-      return 0;
+    if (!died[FIRST_PLAYER]) {
+      return FIRST_PLAYER;
     }
-    if (!died[1]) {
-      return 1;
+    if (!died[SECOND_PLAYER]) {
+      return SECOND_PLAYER;
     }
     return -1;
   }
@@ -176,7 +155,7 @@ struct Field {
     return false;
   }
 
-  int Eval(int player) const {
+  void PopulateDists() const {
     for (int p = 0; p < 2; p++) {
       if (died[p]) continue;
       int end = 0;
@@ -198,6 +177,10 @@ struct Field {
         }
       }
     }
+  }
+
+  int EdgesFeature() const {
+    PopulateDists();
     int score = 0;
     for (int i = 0; i < FIELD_SIZE; i++) {
       if (walls[i]) continue;
@@ -208,8 +191,8 @@ struct Field {
           neighbors++;
         }
       }
-      int d1 = dists[player][i];
-      int d2 = dists[player^1][i];
+      int d1 = dists[FIRST_PLAYER][i];
+      int d2 = dists[SECOND_PLAYER][i];
       if (d1 < d2) {
         score += neighbors;
       } else if (d2 < d1) {
@@ -217,6 +200,35 @@ struct Field {
       }
     }
     return score;
+  }
+
+  int AreaFeature() const {
+    PopulateDists();
+    int score = 0;
+    for (int i = 0; i < FIELD_SIZE; i++) {
+      if (walls[i]) continue;
+      int d1 = dists[FIRST_PLAYER][i];
+      int d2 = dists[SECOND_PLAYER][i];
+      if (d1 < d2) {
+        score += 1;
+      } else if (d2 < d1) {
+        score -= 1;
+      }
+    }
+    return score;
+  }
+
+  int Eval(int player) const {
+    float features[3];
+    features[0] = ply;
+    features[1] = EdgesFeature();
+    features[2] = AreaFeature();
+    int score = int(round(100000 * NNEval(features)));
+    if (player == FIRST_PLAYER) {
+      return score;
+    } else {
+      return -score;
+    }
   }
 
   string gen_features() const;

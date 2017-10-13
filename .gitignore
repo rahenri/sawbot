@@ -13,3 +13,4 @@ callgrind*
 stderr
 *tee.txt
 *.csv
+*.gz

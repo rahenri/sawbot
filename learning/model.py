@@ -77,7 +77,7 @@ class Classifier:
             var_count += layer * last_size
             weights.append(w)
             biases.append(b)
-            last = tf.sigmoid(tf.matmul(last, w) + b)
+            last = tf.nn.relu(tf.matmul(last, w) + b)
             last_size = layer
 
         # if keep_prob < 1.0:

@@ -5,9 +5,11 @@ all: $(BINARY)
 CXXFLAGS=-Wall --std=c++1y -Werror -ggdb3 -D_LOCAL -march=native -O3
 LDLIBS=-lpthread
 
-OBJECTS = field.o utils.o random.o cmd_args.o flags.o minimax.o hash_table.o interruption.o minimax_worker.o
+OBJECTS = field.o utils.o random.o cmd_args.o flags.o minimax.o hash_table.o interruption.o minimax_worker.o model.o nn.o
 MAIN_OBJECT = main.o
 
+INPUT_DATA = $(shell find history/ -name '*.json' 2> /dev/null)
+OUTPUT_DATA = $(patsubst history/%.json,history/%.csv.gz,$(INPUT_DATA))
 
 
 TESTS =
@@ -52,3 +54,8 @@ tests: board_test
 clean:
 	rm -f *.o $(BINARY)
 
+data: $(BINARY) $(OUTPUT_DATA)
+
+%.csv.gz: %.json test/gen_features.py
+	@echo "Compiling data $<"
+	@./test/gen_features.py ./$(BINARY) $< --output $@

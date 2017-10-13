@@ -33,27 +33,19 @@ def CodeFormat(array, indent='', end=';\n', output=None):
     print('', file=output)
   else:
     for subarray in array:
-      CodeFormat(subarray, indent + '  ', end=',\n')
+      CodeFormat(subarray, indent + '  ', end=',\n', output=output)
   print(indent + '}', end=end, file=output)
 
-def GenCode(output, coefs, bias):
-  heuristic_coef = coefs[81]
-  coefs /= heuristic_coef
-  bias /= heuristic_coef
-
-  board_coefs = coefs[:81]
-  turn_coef = 0 #coefs[82]
-  delta_coef = 0 #coefs[1]
-
-  output.write('double cell_score[81] = ')
-  CodeFormat(board_coefs, output=output)
-  output.write('\n')
-  output.write('double reg_turn_coef = {: 2.8f};\n'.format(turn_coef))
-  output.write('\n')
-  output.write('double reg_delta_coef = {: 2.8f};\n'.format(delta_coef))
-  output.write('\n')
-  output.write('double reg_cell_bias = {: 2.8f};\n'.format(bias[0]))
-  output.write('\n')
+def GenCode(output, weights, bias):
+  for i in range(len(weights)):
+      w = weights[i]
+      b = bias[i]
+      output.write('float weights{idx}[{rows}][{cols}] = '.format(idx=i, rows=len(w), cols=len(w[0])))
+      CodeFormat(w, output=output)
+      output.write('\n')
+      output.write('float bias{idx}[{rows}] = '.format(idx=i, rows=len(b)))
+      CodeFormat(b, output=output)
+      output.write('\n')
 
 def main(args):
     features = []
@@ -71,20 +63,23 @@ def main(args):
 
     print(data.describe())
 
-    FEATURES = ['ply', 'score']
+    FEATURES = [
+            'ply',
+            'edge_diff',
+            'area_diff',
+    ]
     TARGET = 'result'
   
     features = data[FEATURES]
     y_true = data[TARGET]
   
     print('size: {}'.format(len(features)))
-    print('draws: {:.2f}%'.format((y_true == 0.5).mean() * 100))
-    print('left: {:.2f}%'.format((y_true == 1).mean() * 100))
-    print('right: {:.2f}%'.format((y_true == 0).mean() * 100))
-  
+    print('left: {:.2f}%'.format((y_true == 0).mean() * 100))
+    print('right: {:.2f}%'.format((y_true == 2).mean() * 100))
+    print('draws: {:.2f}%'.format((y_true == 1).mean() * 100))
   
     features = np.array(features, dtype='float32')
-    y_true = np.array(y_true*2, dtype='int32')
+    y_true = np.array(y_true, dtype='int32')
   
     # classifier = GradientBoostingClassifier()
     # classifier = LogisticRegression()
@@ -106,13 +101,13 @@ def main(args):
     print('Confusion matrix:')
     print(metrics.confusion_matrix(y_true, y_pred))
 
-    print(classifier.model())
+    weights, bias = classifier.model()
   
-    # with open('model.cpp', 'w') as f:
-    #     GenCode(f, classifier.coef_, classifier.intercept_)
+    with open('model.cpp', 'w') as f:
+        GenCode(f, weights, bias)
   
     # print('code:')
-    # GenCode(sys.stdout, classifier.coef_, classifier.intercept_)
+    # GenCode(sys.stdout, weights, bias)
   
     # skclassifier = LogisticRegression(C=1000.0)
     # skfeatures = features.reshape([-1, len(features[0][0])])

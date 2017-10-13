@@ -121,10 +121,12 @@ uint64_t Field::ComputeHash() const {
 
 string Field::gen_features() const {
   stringstream stream;
-  auto score = Eval(0);
+  auto edge_diff = EdgesFeature();
+  auto area_diff = AreaFeature();
   stream << "{";
   stream << "\"ply\":" << ply;
-  stream << ",\"score\":" << score;
+  stream << ",\"edge_diff\":" << edge_diff;
+  stream << ",\"area_diff\":" << area_diff;
   stream << "}";
   return stream.str();
 }

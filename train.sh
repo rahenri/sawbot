@@ -2,7 +2,16 @@
 
 set -e
 
-make -j4
-cp sawbot sawbot-candidate 
+while true; do
 
-exec ./test/test.py --action train --config config.json --logdir logs --count 5000 $@
+  make -j4
+
+  cp sawbot sawbot-candidate 
+
+  ./test/test.py --config config.json --count 16
+
+  make data
+
+  ./learning/train.py history/*.csv.gz
+
+done

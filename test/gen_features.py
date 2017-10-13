@@ -40,11 +40,11 @@ def main(args):
                 init_state = history['init_state']
                 winner = history['result']
                 if winner == bot1:
-                    result = 1
-                elif winner == bot2:
                     result = 0
+                elif winner == bot2:
+                    result = 2
                 elif winner == -1:
-                    result = 0.5
+                    result = 1
                 else:
                     raise RuntimeError('Invalid result')
 
@@ -57,7 +57,7 @@ def main(args):
     print(df)
     print(df.describe())
 
-    df.to_csv('training_set.csv.gz', index=False, compression='gzip')
+    df.to_csv(args.output, index=False, compression='gzip')
 
 
 
@@ -65,5 +65,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Run two bots againts each other.')
     parser.add_argument('bot', nargs=1, help='The bot command to generate features')
     parser.add_argument('history', nargs='+', help='The history files to process')
+    parser.add_argument('--output', default='training_set.csv.gz', help='Output file')
     args = parser.parse_args()
     main(args)
