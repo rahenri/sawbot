@@ -6,7 +6,7 @@ float NNEval(const float* input) {
   float output0[10];
   for (int i = 0; i < 10; i++) {
     float out = bias0[i];
-    for (int j = 0; j < 3; j++) {
+    for (int j = 0; j < 4; j++) {
       out += input[j] * weights0[j][i];
     }
     if (out < 0) out = 0;

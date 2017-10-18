@@ -67,6 +67,7 @@ def main(args):
             'ply',
             'edge_diff',
             'area_diff',
+            'connected',
     ]
     TARGET = 'result'
   
@@ -103,8 +104,9 @@ def main(args):
 
     weights, bias = classifier.model()
   
-    with open('model.cpp', 'w') as f:
-        GenCode(f, weights, bias)
+    if args.codegen:
+        with open('model.cpp', 'w') as f:
+            GenCode(f, weights, bias)
   
     # print('code:')
     # GenCode(sys.stdout, weights, bias)
@@ -121,5 +123,6 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Run two bots againts each other.')
     parser.add_argument('files', nargs='+', help='The files to analyse')
+    parser.add_argument('--codegen', default=False, action='store_true')
     args = parser.parse_args()
     main(args)

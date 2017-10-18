@@ -12,6 +12,6 @@ while true; do
 
   make data
 
-  ./learning/train.py history/*.csv.gz
+  ./learning/train.py --codegen history/*.csv.gz
 
 done

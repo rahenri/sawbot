@@ -120,13 +120,17 @@ uint64_t Field::ComputeHash() const {
 }
 
 string Field::gen_features() const {
+  PrepFeatures();
+
   stringstream stream;
   auto edge_diff = EdgesFeature();
   auto area_diff = AreaFeature();
+  auto connected = Connected();
   stream << "{";
   stream << "\"ply\":" << ply;
   stream << ",\"edge_diff\":" << edge_diff;
   stream << ",\"area_diff\":" << area_diff;
+  stream << ",\"connected\":" << connected;
   stream << "}";
   return stream.str();
 }

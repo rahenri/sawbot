@@ -34,6 +34,9 @@
       "name": "v10",
       "cmd": "./sawbot-v10"
     }, {
+      "name": "v11",
+      "cmd": "./sawbot-v11"
+    }, {
       "name": "candidate",
       "cmd": "./sawbot-candidate"
     }, {
@@ -43,6 +46,7 @@
   ],
   "train_bot": "train-bot",
   "pairs": [
+    ["v11", "candidate"],
     ["v10", "candidate"],
     ["v9", "candidate"]
   ],

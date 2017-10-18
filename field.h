@@ -179,8 +179,11 @@ struct Field {
     }
   }
 
-  int EdgesFeature() const {
+  void PrepFeatures() const {
     PopulateDists();
+  }
+
+  int EdgesFeature() const {
     int score = 0;
     for (int i = 0; i < FIELD_SIZE; i++) {
       if (walls[i]) continue;
@@ -203,7 +206,6 @@ struct Field {
   }
 
   int AreaFeature() const {
-    PopulateDists();
     int score = 0;
     for (int i = 0; i < FIELD_SIZE; i++) {
       if (walls[i]) continue;
@@ -218,11 +220,25 @@ struct Field {
     return score;
   }
 
+  int Connected() const {
+    for (int i = 0; i < FIELD_SIZE; i++) {
+      if (walls[i]) continue;
+      int d1 = dists[FIRST_PLAYER][i];
+      int d2 = dists[SECOND_PLAYER][i];
+      if (d1 < 0xffff && d2 < 0xffff) {
+        return 1;
+      }
+    }
+    return 0;
+  }
+
   int Eval(int player) const {
-    float features[3];
+    PrepFeatures();
+    float features[4];
     features[0] = ply;
     features[1] = EdgesFeature();
     features[2] = AreaFeature();
+    features[3] = Connected();
     int score = int(round(100000 * NNEval(features)));
     if (player == FIRST_PLAYER) {
       return score;
